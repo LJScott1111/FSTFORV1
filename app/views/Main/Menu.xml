@@ -1,0 +1,10 @@
+<Alloy>
+	<View id="menuWrapper">
+		<View id="iosHeader" platform="ios" />
+		<ScrollView class="container padding_bottom">
+
+			<Require id="log_out" src="Misc/MenuButton" title="L('log_out').toUpperCase()" />
+			
+		</ScrollView>
+	</View>
+</Alloy>

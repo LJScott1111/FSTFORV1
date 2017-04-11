@@ -1,26 +1,243 @@
-/*
-
-This is your global styles file. Selectors and rules you define
-here will be applied throughout your app. However, these rules
-have the lowest priority of any style settings.
-
-For more information, see the "Style Priorities" section of
-http://docs.appcelerator.com/platform/latest/#!/guide/Alloy_Styles_and_Themes
-
-For example, the following would apply to all labels, windows,
-and text fields (depending on platform) in your app unless you
-overrode the settings with other TSS, XML, or JS settings:
-
-'Label[platform=android,windows]': {
-	color: '#000' // all platforms except Android and Windows default to black
-}
 
 'Window': {
-	backgroundColor: '#fff' // white background instead of default transparent or black
+	backgroundColor: '#fff', // white background instead of default transparent or black
+	/* TODO
+	orientationModes: [
+	Ti.UI.PORTRAIT
+	],*/
+
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL
 }
 
-'TextField[platform=android]': {
-	height: Ti.UI.SIZE
+'Label[platform=android,windows]': {
+	color: '#000'
 }
 
+'TextField': {
+	height: '40dp',
+	left: '12dp',
+	right: '12dp',
+	hintTextColor: '#C0C0C0',
+	borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+	paddingLeft: '5dp',
+	paddingRight: '5dp',
+	autocorrect: false
+}
+
+'Button': {
+	height: '30dp',
+	width: '40%',
+	borderWidth: '1dp',
+	borderRadius: '5dp',
+	borderColor: Alloy.Globals.globalValues.colors.button,
+	backgroundColor: Alloy.Globals.globalValues.colors.button,
+	color: '#fff'
+}
+
+'.keyboard-type-email': {
+	keyboardType: Titanium.UI.KEYBOARD_TYPE_EMAIL,
+	autocapitalization: Titanium.UI.TEXT_AUTOCAPITALIZATION_NONE
+}
+
+/**
+* 	LAYOUT STYLE GLOBAL
 */
+
+'.vertical-layout': {
+	layout: 'vertical',
+	height: Titanium.UI.SIZE
+}
+
+'.horizontal-layout': {
+	layout: 'horizontal',
+	height: Titanium.UI.SIZE
+}
+
+'.absolute-layout': {
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL
+}
+
+'.width-size': {
+	width: Titanium.UI.SIZE
+}
+
+'.horizontal-layout-size': {
+	layout: 'horizontal',
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.SIZE
+}
+
+'.layout-fill': {
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL
+}
+
+/**
+* 	PLACEHOLDER/IMAGES
+*/
+
+'.logo': {
+	image: 'graphics/logo.png'
+}
+
+/**
+* 	PADDING GLOBAL
+*/
+
+'.padding-left': {
+	left: '10dp'
+}
+
+'.padding-right': {
+	right: '10dp'
+}
+
+'.padding-top': {
+	top: '10dp'
+}
+
+'.padding-bottom': {
+	bottom: '10dp'
+}
+
+'.padding-left-zero': {
+	left: '0dp'
+}
+
+'.padding-right-zero': {
+	right: '0dp'
+}
+
+'.padding-top-zero': {
+	top: '0dp'
+}
+
+'.padding-bottom-zero': {
+	bottom: '0dp'
+}
+
+'.padding-left-right-top': {
+	left: '10dp',
+	right: '10dp',
+	top: '10dp'
+}
+
+
+/**
+* 	OTHER MISC STYLES
+*/
+
+".container": {
+	backgroundColor: '#fff',
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL
+}
+
+'.view-separator': {
+	top: '0dp',
+	backgroundColor: '#d8d8d8',
+	height: '1dp',
+	width: Titanium.UI.FILL,
+	touchEnabled: false,
+	opacity: 0.2
+}
+
+'.vertical-separator': {
+	top: '10dp',
+	bottom: '10dp',
+	backgroundColor: '#d8d8d8',
+	width: '1dp',
+	// height: Titanium.UI.FILL,
+	touchEnabled: false,
+	opacity: 0.5
+}
+
+'.touch-false': {
+	touchEnabled: false
+}
+
+'.theme-color': {
+	color: Alloy.Globals.globalValues.colors.theme
+}
+
+'.theme-bgcolor': {
+	backgroundColor: Alloy.Globals.globalValues.colors.theme
+}
+
+'.color-white': {
+	color: '#fff'
+}
+
+'.color-gray': {
+	color: '#898989'
+}
+
+'.color-red':{
+	color: '#cc0000'
+}
+
+'.color-yellow': {
+	color: '#fcca6d'
+}
+
+'.bgcolor-gray': {
+	backgroundColor: '#898989'
+}
+
+'.bgcolor-green': {
+	backgroundColor: '#4caf50'
+}
+
+'.scrollview-normal': {
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL,
+	scrollType: 'vertical'
+}
+
+/**
+* FONT STYLE GLOBAL
+*/
+
+'.fontawesome': {
+	font: {
+		fontFamily: 'FontAwesome'
+	}
+}
+
+'.font-13': {
+	font: {
+		fontSize: '13dp'
+	}
+}
+
+'.font-14': {
+	font: {
+		fontSize: '14dp'
+	}
+}
+
+'.font-16': {
+	font: {
+		fontSize: '16dp'
+	}
+}
+
+'.font-18': {
+	font: {
+		fontSize: '18dp'
+	}
+}
+
+'.font-22': {
+	font: {
+		fontSize: '22dp'
+	}
+}
+
+'.font-bold': {
+	font:{
+		fontWeight: 'bold'
+	}
+}
