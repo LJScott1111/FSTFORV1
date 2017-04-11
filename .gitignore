@@ -7,3 +7,7 @@ build/android/*
 .settings
 build.log
 .fastdev.lock
+/build
+/i18n
+/platform
+/Resources
