@@ -4,7 +4,8 @@
 	layout: 'vertical',
 	contentHeight: 'auto',
 	left: 0,
-	top: '40dp'
+	top: '40dp',
+	height: Titanium.UI.FILL
 }
 
 "#iosHeader": {

@@ -45,13 +45,11 @@
 */
 
 '.vertical-layout': {
-	layout: 'vertical',
-	height: Titanium.UI.SIZE
+	layout: 'vertical'
 }
 
 '.horizontal-layout': {
-	layout: 'horizontal',
-	height: Titanium.UI.SIZE
+	layout: 'horizontal'
 }
 
 '.absolute-layout': {
@@ -59,12 +57,17 @@
 	width: Titanium.UI.FILL
 }
 
-'.width-size': {
+'.hight-fill-width-size': {
+	height: Titanium.UI.FILL,
 	width: Titanium.UI.SIZE
 }
 
-'.horizontal-layout-size': {
-	layout: 'horizontal',
+'.height-size-width-fill': {
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL
+}
+
+'.layout-size': {
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.SIZE
 }
@@ -128,12 +131,6 @@
 /**
 * 	OTHER MISC STYLES
 */
-
-".container": {
-	backgroundColor: '#fff',
-	height: Titanium.UI.FILL,
-	width: Titanium.UI.FILL
-}
 
 '.view-separator': {
 	top: '0dp',

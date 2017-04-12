@@ -52,8 +52,8 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, titleText, ce
 				hidden : newOne === true ? false : true
 			},
 			navBar : {
-				// backgroundColor : Alloy.Globals.globalValues.colors.theme,
-				left : leftView,
+				backgroundColor : '#000',
+				left : 'Misc/LeftNavView',
 				// right : 'Misc/NavRightMenu',
 				title : titleText,
 				center : centerView,
@@ -84,8 +84,8 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, titleText, ce
 				hidden : true
 			},
 			navBar : {
-				backgroundColor : '#000000',
-				left : leftView,
+				backgroundColor : '#000',
+				left : 'Misc/LeftNavView',
 				right : rightView,
 				title : titleText,
 				center : centerView,

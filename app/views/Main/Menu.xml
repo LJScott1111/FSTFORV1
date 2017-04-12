@@ -1,9 +1,9 @@
 <Alloy>
 	<View id="menuWrapper">
 		<View id="iosHeader" platform="ios" />
-		<ScrollView class="container padding_bottom">
+		<ScrollView class="container padding-bottom">
 
-			<Require id="log_out" src="Misc/MenuButton" title="L('log_out').toUpperCase()" />
+			<Require id="logout" src="Misc/MenuButton" title="L('logout').toUpperCase()" />
 			
 		</ScrollView>
 	</View>
