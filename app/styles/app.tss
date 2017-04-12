@@ -40,6 +40,16 @@
 	autocapitalization: Titanium.UI.TEXT_AUTOCAPITALIZATION_NONE
 }
 
+'.hidden': {
+	visible: false,
+	hiddenBehavior: Titanium.UI.HIDDEN_BEHAVIOR_GONE
+}
+
+".iosHeader": {
+	width: '100%',
+	height: '20dp'
+}
+
 /**
 * 	LAYOUT STYLE GLOBAL
 */
@@ -188,9 +198,15 @@
 }
 
 '.scrollview-normal': {
-	height: Titanium.UI.FILL,
-	width: Titanium.UI.FILL,
-	scrollType: 'vertical'
+	// height: Titanium.UI.FILL,
+	width: '100%',
+	scrollType: 'vertical',
+	layout: 'vertical',
+	contentHeight: 'auto',
+	contentWidth: 'auto',
+	disableBounce: true,
+	top: 0,
+	bottom: '20dp'
 }
 
 /**

@@ -1,0 +1,9 @@
+
+"#win": {
+	zIndex: 99
+}
+
+"#win[platform=ios]": {
+	modal: true
+}
+

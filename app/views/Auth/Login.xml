@@ -1,0 +1,22 @@
+<Alloy>
+	<Window id="win" class="vertical-layout"  backgroundImage="/graphics/bg.png">
+		<View class="iosHeader" platform="ios" />
+		<View class="absolute-layout">
+			<View id="authView" class="vertical-layout padding-top-zero">
+				<ScrollView class="scrollview-normal">
+					<Label>Auth Screen</Label>
+				</ScrollView>
+			</View>
+			<View id="loginView" class="hidden vertical-layout padding-top-zero">
+				<ScrollView class="scrollview-normal">
+					<Label>Login View</Label>
+				</ScrollView>
+			</View>
+			<View id="signupView" class="hidden vertical-layout padding-top-zero">
+				<ScrollView class="scrollview-normal">
+					<Label>Signup View</Label>
+				</ScrollView>
+			</View>
+		</View>
+	</Window>
+</Alloy>
