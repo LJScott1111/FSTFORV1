@@ -29,11 +29,12 @@ if (OS_ANDROID) {
 		}
 	});
 }
+/*
 
 var vwLandingScreen = Titanium.UI.createView({
 	width : Titanium.UI.FILL,
 	height : Titanium.UI.FILL,
-	backgroundImage : '/icons/landing_screen.png',
+	// backgroundImage : '/icons/landing_screen.png',
 	zIndex : 9999
 });
 
@@ -42,3 +43,4 @@ $.mainWindow.add(vwLandingScreen);
 vwLandingScreen.addEventListener('click', function() {
 	$.mainWindow.remove(vwLandingScreen);
 });
+*/

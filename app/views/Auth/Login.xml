@@ -1,20 +1,27 @@
 <Alloy>
-	<Window id="win" class="vertical-layout"  backgroundImage="/graphics/bg.png">
+	<Window id="win" class="vertical-layout" backgroundColor="#000">
 		<View class="iosHeader" platform="ios" />
-		<View class="absolute-layout">
-			<View id="authView" class="vertical-layout padding-top-zero">
-				<ScrollView class="scrollview-normal">
-					<Label>Auth Screen</Label>
-				</ScrollView>
+		<View class="absolute-layout height-size-width-fill">
+			<VideoPlayer id="launchVideo" ></VideoPlayer>
+			<View id="authView" class="layout-fill padding-top-zero">
+				<Label id="continueAsGuest" class="color-white font-16" bottom="80dp" text="L('continueAsGuest')"></Label>
+				<View class="absolute-layout height-size-width-fill padding-bottom-zero" zIndex="99">
+					<Button class="loginButtons padding-left-zero font-18 font-bold" id="login" title="L('login')"></Button>
+					<Button class="loginButtons padding-right-zero font-18 font-bold" id="signup" title="L('signup')"></Button>
+				</View>
 			</View>
-			<View id="loginView" class="hidden vertical-layout padding-top-zero">
-				<ScrollView class="scrollview-normal">
-					<Label>Login View</Label>
-				</ScrollView>
-			</View>
-			<View id="signupView" class="hidden vertical-layout padding-top-zero">
-				<ScrollView class="scrollview-normal">
-					<Label>Signup View</Label>
+			<View id="signupView" class="hidden vertical-layout layout-fill padding-top-zero">
+				<View class="header">
+					<Label id="back" class="fontawesome font-16 padding-left color-white" text="\uf060"></Label>
+				</View>
+				<ScrollView class="scrollview-normal layout-fill">
+					<TextField id="email" class="color-white" top="40%" hintText="L('email_address')"></TextField>
+					<TextField id="passowrd" class="color-white hidden" top="40%" hintText="L('password')"></TextField>
+					<TextField id="confirmPassword" class="color-white hidden" top="40%" hintText="L('confirm_password')"></TextField>
+					<View class="height-size-width-fill" bottom="40%">
+						<Button id="prev" class="padding-left hidden prevNextButtonsGroup" width="30%" title="L('prev')"></Button>
+						<Button id="next" class="padding-right prevNextButtonsGroup" width="30%" title="L('next')"></Button>
+					</View>
 				</ScrollView>
 			</View>
 		</View>

@@ -10,6 +10,10 @@
 	width: Titanium.UI.FILL
 }
 
+'View': {
+	hiddenBehavior: Titanium.UI.HIDDEN_BEHAVIOR_GONE
+}
+
 'Label[platform=android,windows]': {
 	color: '#000'
 }
@@ -19,19 +23,25 @@
 	left: '12dp',
 	right: '12dp',
 	hintTextColor: '#C0C0C0',
-	borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+	// borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+	backgroundColor: 'transparent',
+	borderStyle: Titanium.UI.INPUT_BORDERSTYLE_NONE,
+	autocapitalization: false,
+	borderRadius: '5dp',
+	borderColor: '#fff',
 	paddingLeft: '5dp',
 	paddingRight: '5dp',
-	autocorrect: false
+	autocorrect: false,
+	hiddenBehavior: Titanium.UI.HIDDEN_BEHAVIOR_GONE
 }
 
 'Button': {
 	height: '30dp',
 	width: '40%',
-	borderWidth: '1dp',
-	borderRadius: '5dp',
-	borderColor: Alloy.Globals.globalValues.colors.button,
-	backgroundColor: Alloy.Globals.globalValues.colors.button,
+	// borderWidth: '1dp',
+	// borderRadius: '5dp',
+	// borderColor: Alloy.Globals.globalValues.colors.button,
+	// backgroundColor: Alloy.Globals.globalValues.colors.button,
 	color: '#fff'
 }
 
@@ -63,8 +73,7 @@
 }
 
 '.absolute-layout': {
-	height: Titanium.UI.SIZE,
-	width: Titanium.UI.FILL
+	layout: 'absolute'
 }
 
 '.hight-fill-width-size': {
@@ -84,6 +93,11 @@
 
 '.layout-fill': {
 	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL
+}
+
+'.header': {
+	height: '50dp',
 	width: Titanium.UI.FILL
 }
 
@@ -201,7 +215,7 @@
 	// height: Titanium.UI.FILL,
 	width: '100%',
 	scrollType: 'vertical',
-	layout: 'vertical',
+	// layout: 'vertical',
 	contentHeight: 'auto',
 	contentWidth: 'auto',
 	disableBounce: true,

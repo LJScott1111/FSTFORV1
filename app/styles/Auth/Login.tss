@@ -7,3 +7,33 @@
 	modal: true
 }
 
+"#launchVideo": {
+	autoplay: true,
+	repeatMode: true,
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL,
+	url: '/graphics/launch_video.mp4',
+	mediaControlStyle: Titanium.Media.VIDEO_CONTROL_NONE,
+	// fullscreen: true,
+	focusable: false
+}
+
+".loginButtons": {
+	width: '49.8%',
+	height: '50dp'
+}
+
+"#login": {
+	backgroundColor: '#9a0203'
+}
+
+"#signup": {
+	backgroundColor: '#13acca'
+}
+
+'.prevNextButtonsGroup': {
+	
+	borderColor: '#fff',
+	borderRadius: '5dp',
+	borderWidth: '1dp'
+}
