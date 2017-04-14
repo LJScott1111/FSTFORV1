@@ -19,9 +19,25 @@ Alloy.Globals.globalValues = {
 	}
 };
 
+Alloy.Globals.appData = {
+	"details" : [],
+	"bands" : [],
+	"shows" : [],
+	"venues" : []
+};
+
 Alloy.Globals.loading = Alloy.createWidget('nl.fokkezb.loading');
 Alloy.Globals.UTILS = require('Utils');
-// Alloy.Globals.API = require('Api');
+Alloy.Globals.API = require('Api');
+
+// TOAST - https://github.com/FokkeZB/nl.fokkezb.toast
+var toast = Alloy.createWidget('nl.fokkezb.toast', 'global', {
+	// defaults
+});
+Alloy.Globals.toast = toast.show;
+// same as toast.info
+Alloy.Globals.error = toast.error;
+// applies the 'error' theme
 
 // Set userdata
 if (!Titanium.App.Properties.getObject('userdata')) {
@@ -30,6 +46,7 @@ if (!Titanium.App.Properties.getObject('userdata')) {
 
 /* ------------------------------------------ Defining Alloy variables ----------------------------------------------- */
 
+// Common function to open a window
 Alloy.Globals.openWindow = function(controller, arguments, newOne, titleText, centerView, rightView, leftView) {
 
 	if (Alloy.Globals.pageflow.getCurrentPage() == null || newOne === true) {
