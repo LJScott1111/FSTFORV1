@@ -76,15 +76,6 @@ api.logout = function(args, success, fail) {
 	}
 };
 
-api.checkUser = function() {
-
-	// To check if a person is logged in
-	var promise = Kinvey.init({
-		appKey : 'kid_b1vnajEDkl',
-		appSecret : '10609ec172544ae6b75923af98bfab95'
-	});
-};
-
 api.getUserSchedule = function(args, success, fail) {
 	// Local DB
 };

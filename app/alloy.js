@@ -1,9 +1,38 @@
 // Kinvey
 var Kinvey = Alloy.Globals.Kinvey = require('kinvey-titanium-sdk-3.4.4');
-var promise = Kinvey.init({
-	appKey : 'kid_b1vnajEDkl',
-	appSecret : '10609ec172544ae6b75923af98bfab95'
-});
+Alloy.Globals.checkUser = function(callback) {
+	var promise = Kinvey.initialize({
+		appKey : 'kid_b1vnajEDkl',
+		appSecret : '10609ec172544ae6b75923af98bfab95'
+	});
+
+	promise.then(function(user) {
+		//Alloy.Globals.setupPushNotifications();
+
+		// If user is logged in using default user, the app will ask her login on every app load
+		console.log('CHECK USER = ', Titanium.App.Properties.getString('defaultUser'));
+		if (Titanium.App.Properties.getString('defaultUser') == true) {
+			callback();
+			return;
+		}
+
+		if (!user) {// For testing!
+			callback();
+
+		} else {
+
+			var thisUser = Kinvey.User.getActiveUser();
+			//TODO: download all the reqired data and save it in 'appdata'
+			callback(thisUser);
+		}
+
+	}, function(error) {
+		console.log("NO USER!!");
+		//errorCallback(error);
+		callback();
+	});
+
+};
 
 // Initialice jolicode pageflow
 Alloy.Globals.jolicode = {};
