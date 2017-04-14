@@ -1,3 +1,11 @@
+// Kinvey
+var Kinvey = Alloy.Globals.Kinvey = require('kinvey-titanium-sdk-3.4.4');
+var promise = Kinvey.init({
+	appKey : 'kid_b1vnajEDkl',
+	appSecret : '10609ec172544ae6b75923af98bfab95'
+});
+
+// Initialice jolicode pageflow
 Alloy.Globals.jolicode = {};
 Alloy.Globals.jolicode.pageflow = {};
 Alloy.Globals.jolicode.pageflow.height = Ti.Platform.displayCaps.platformHeight;

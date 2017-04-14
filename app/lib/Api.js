@@ -1,184 +1,100 @@
 /***
  Api.js
- 
+
  */
 
-var config = require('Config');
 var moment = require('alloy/moment');
+var Kinvey = Alloy.Globals.Kinvey;
 
 var api = {};
 
-/*
- * Function for converting objects to structured querystring (email=example@example.com&password=AdAdw2)
- */
-function queryString(data) {
-	var self = this;
-	for (var key in data) {
-		if ( typeof data[key] === 'object' && data[key] !== null) {
-			var o = data[key];
-			delete data[key];
-			for (var k in o) {
-				var new_key = key + "[" + k + "]";
-				var value = o[k];
+api.signup = function(args, success, fail) {
 
-				if (value === true) {
-					value = 1;
-				}
+	var promise = Kinvey.User.signup({
+		username : args.username,
+		password : args.password,
+		application : 'festforum'
+	});
 
-				if (value === false) {
-					value = 0;
-				}
-				data[new_key] = value;
-			}
-		}
-	}
-	var arr = [];
-	for (key in data)
-	arr.push(key + '=' + data[key]);
-	return arr.join("&");
+	Alloy.Globals.loading.show();
+
+	promise.then(function(user) {
+
+		Alloy.Globals.loading.hide();
+		console.log("SIGNUP SUCCESS ", JSON.stringify(user));
+		success(user);
+
+	}, function(error) {
+
+		Alloy.Globals.loading.hide();
+
+		console.error("SIGNUP ERROR ", error);
+		fail(error);
+	});
+
 };
 
-/*
- * Function for http request
- */
-function httpRequest(endpoint, method, data, successFunction, errorFunction, fileType) {
+api.login = function(args, success, fail) {
+	var promise = Kinvey.User.login({
+		username : args.username,
+		password : args.password,
+		application : 'festforum'
+	});
 
-	if (!Ti.Network.online) {
+	Alloy.Globals.loading.show();
 
-		if (OS_ANDROID) {
+	promise.then(function(user) {
 
-			var dialog = Ti.UI.createAlertDialog({
-				cancel : 1,
-				buttonNames : ['Review Settings', 'Cancel'],
-				message : 'No internet connection. Please review your data settings',
-				title : 'Bunxious'
-			});
-			dialog.addEventListener('click', function(e) {
+		Alloy.Globals.loading.hide();
+		console.log("LOGIN SUCCESS ", JSON.stringify(user));
+		success(user);
 
-				if (e.index === 0) {
+	}, function(error) {
 
-					var intent = Ti.Android.createIntent({
-						action : 'android.settings.WIRELESS_SETTINGS'
-					});
-					Ti.Android.currentActivity.startActivity(intent);
-				}
-			});
-			dialog.show();
-		} else {
+		Alloy.Globals.loading.hide();
 
-			alert('No internet connection. Please review your data settings');
-		}
+		console.error("LOGIN ERROR ", error);
+		fail(error);
+	});
+};
 
-		if (errorFunction) {
-
-			errorFunction();
-		}
-		return;
+api.logout = function(args, success, fail) {
+	var user = Kinvey.getActiveUser();
+	if (null !== user) {
+		var promise = Kinvey.User.logout();
+		promise.then(function() {
+			console.debug("Logout Success");
+			Titanium.App.Properties.removeProperty('appdata');
+			Titanium.App.Properties.removeProperty('userid');
+			console.debug("Titanium.App.Properties.removeProperty('userid') ", Titanium.App.Properties.getString('userid'));
+			Titanium.App.Properties.removeProperty('defaultUser', false);
+			// onloadCallback();
+		}, function(error) {
+			console.debug("Logout Error");
+			// errorCallback(error);
+		});
 	}
+};
 
-	var url = config.baseURL + endpoint;
+api.checkUser = function() {
 
-	// if (data && method == 'GET') {
-	//
-	// url = url + '?' + queryString(data);
-	//
-	// }
+	// To check if a person is logged in
+	var promise = Kinvey.init({
+		appKey : 'kid_b1vnajEDkl',
+		appSecret : '10609ec172544ae6b75923af98bfab95'
+	});
+};
 
-	var xhr = Ti.Network.createHTTPClient();
+api.getUserSchedule = function(args, success, fail) {
+	// Local DB
+};
 
-	var retries = 0;
+api.saveUserSchedule = function(args, success, fail) {
+	// Local DB
+};
 
-	xhr.onload = function() {
-
-		Ti.API.info(endpoint, this.responseText);
-
-		if (this.status == '200' || this.status == '201') {
-
-			try {
-
-				var responseJSON = JSON.parse(this.responseText);
-
-				if (responseJSON && !responseJSON.error) {
-
-					if (successFunction) {
-
-						successFunction(responseJSON);
-					}
-				}
-			} catch (e) {
-
-				if (errorFunction) {
-
-					errorFunction(e);
-				}
-				Ti.API.error(endpoint, e);
-			}
-		} else {
-
-			if (errorFunction) {
-
-				errorFunction(this.response);
-			}
-			Ti.API.error(this.response);
-		}
-	};
-
-	xhr.onerror = function(e) {
-
-		// if (retries < 3) {
-		//
-		// retries++;
-		// doRequest();
-		// } else {
-
-		Ti.API.info('Transmission error: ' + endpoint + ' ' + JSON.stringify(this) + this.responseText);
-
-		// alert('There was a communication error. Please check your internet connection and try again.');
-
-		if (errorFunction && this.responseText) {
-
-			errorFunction(this.responseText);
-
-		} else if (errorFunction) {
-
-			errorFunction(e);
-		}
-		// }
-	};
-
-	xhr.timeout = 20000;
-
-	function doRequest() {
-
-		xhr.open(method, url);
-
-		xhr.setRequestHeader('Authorization', 'Bearer ' + Titanium.App.Properties.getString('token'));
-		console.log('TOKEN ', 'Bearer ' + Titanium.App.Properties.getString('token'));
-
-		if (fileType === 'media') {
-			xhr.setRequestHeader('enctype', 'multipart/form-data');
-			Ti.API.info('gonna hit ' + url + ' and gonna send ' + JSON.stringify(data));
-			xhr.send(data);
-
-		} else if (fileType == 'urlencoded') {
-			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-			Ti.API.info('gonna hit urlencoded ' + url + ' and gonna send ' + JSON.stringify(queryString(data)));
-			xhr.send(queryString(data));
-		} else if (data && method == 'POST') {
-
-			xhr.setRequestHeader('Content-Type', 'application/json');
-			Ti.API.info('gonna hit ' + url + ' and gonna send ' + JSON.stringify(JSON.stringify(data)));
-			xhr.send(JSON.stringify(data));
-		} else {
-
-			xhr.setRequestHeader('Content-Type', 'application/json');
-			Ti.API.info('gonna hit --> ' + url);
-			xhr.send();
-		}
-	}
-
-	doRequest();
-
-}
+api.deleteUserSchedule = function(args, success, fail) {
+	// Local DB
+};
 
 module.exports = api;

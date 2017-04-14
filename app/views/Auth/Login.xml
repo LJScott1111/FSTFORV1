@@ -1,7 +1,7 @@
 <Alloy>
 	<Window id="win" class="vertical-layout" backgroundColor="#000">
 		<View class="iosHeader" platform="ios" />
-		<View class="absolute-layout height-size-width-fill">
+		<View id="container" class="absolute-layout height-size-width-fill">
 			<VideoPlayer id="launchVideo" ></VideoPlayer>
 			<View id="authView" class="layout-fill padding-top-zero">
 				<Label id="continueAsGuest" class="color-white font-16" bottom="80dp" text="L('continueAsGuest')"></Label>
@@ -16,11 +16,12 @@
 				</View>
 				<ScrollView class="scrollview-normal layout-fill">
 					<TextField id="email" class="color-white" top="40%" hintText="L('email_address')"></TextField>
-					<TextField id="passowrd" class="color-white hidden" top="40%" hintText="L('password')"></TextField>
-					<TextField id="confirmPassword" class="color-white hidden" top="40%" hintText="L('confirm_password')"></TextField>
+					<TextField id="password" class="color-white hidden" top="40%" passwordMask="true" hintText="L('password')"></TextField>
+					<TextField id="confirmPassword" class="color-white hidden" top="40%" passwordMask="true" hintText="L('confirm_password')"></TextField>
 					<View class="height-size-width-fill" bottom="40%">
 						<Button id="prev" class="padding-left hidden prevNextButtonsGroup" width="30%" title="L('prev')"></Button>
 						<Button id="next" class="padding-right prevNextButtonsGroup" width="30%" title="L('next')"></Button>
+						<Button id="done" class="padding-right prevNextButtonsGroup" width="30%" title="L('done')"></Button>
 					</View>
 				</ScrollView>
 			</View>
