@@ -1,11 +1,11 @@
 
 "#win": {
-	zIndex: 99
+	zIndex: 1
 }
 
-"#win[platform=ios]": {
-	modal: true
-}
+// "#win[platform=ios]": {
+	// modal: true
+// }
 
 "#launchVideo": {
 	autoplay: true,
@@ -14,6 +14,7 @@
 	width: Titanium.UI.FILL,
 	url: '/graphics/launch_video.mov',
 	mediaControlStyle: Titanium.Media.VIDEO_CONTROL_NONE,
+	scalingMode : Titanium.Media.VIDEO_SCALING_ASPECT_FIT,
 	// fullscreen: true,
 	focusable: false
 }
