@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
 	<string name="app_name">Fest Forum</string>
-
+	
 	<string name="continueAsGuest">Continue as a Guest</string>
 	<string name="login">LOGIN</string>
 	<string name="signup">SIGNUP</string>
@@ -11,9 +11,12 @@
 	<string name="prev">Prev</string>
 	<string name="next">Next</string>
 	<string name="done">Done</string>
-
+	
 	<string name="logout">Logout</string>
 	
+	
+	
+	<string name="err_generic">Some error occured. Please try again some time.</string>
 	<string name="err_invalidEmail">Please enter a valid email address.</string>
 	<string name="err_password">Password should be minimum of 5 character long.</string>
 	<string name="err_confirmPassword">Passwords do not match.</string>

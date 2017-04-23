@@ -1,16 +1,24 @@
 var nsMainView = {};
 
 nsMainView.postlayoutCall = function() {
-	// if (!Titanium.App.Properties.getString('token')) {
-	// TODO: Check if user is logged in - Uncomment the code below to view login screen
+	// console.log('CHECK USER = ', Titanium.App.Properties.getString('defaultUser'));
+	// if (Titanium.App.Properties.getString('defaultUser') == true) {
 
-	Alloy.createController('Auth/Login', {
-		callback : function() {
-			console.log('CALLBACK!');
+	Alloy.Globals.checkUser(function(user) {
+		if (!user || user == null) {
+			Alloy.createController('Auth/Login', {
+				callback : function() {
+					console.log('CALLBACK!');
+				}
+			}).getView().open();
+		} else {
+			console.log('USER ', user);
+			// Save user details TODO
 		}
-	}).getView().open();
+	});
 
 	// }
+
 	$.vwMain.removeEventListener('postlayout', nsMainView.postlayoutCall);
 	return;
 };
