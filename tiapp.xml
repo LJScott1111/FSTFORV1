@@ -10,8 +10,11 @@
     <icon>appicon.png</icon>
     <statusbar-hidden>false</statusbar-hidden>
     <fullscreen>true</fullscreen>
-	<navbar-hidden>true</navbar-hidden>
+    <navbar-hidden>true</navbar-hidden>
     <analytics>false</analytics>
+    <!-- Shraddha ID -->
+    <!--<guid>912d6693-d5c6-4084-9134-ded88d697d9d</guid>-->
+    <!-- Eric's ID -->
     <guid>a326d999-7888-488d-9777-3fe6782d3af7</guid>
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <property name="run-on-main-thread" type="bool">true</property>
@@ -43,9 +46,8 @@
             </dict>
         </plist>
     </ios>
-     <android xmlns:android="http://schemas.android.com/apk/res/android">
-    	<application android:theme="@style/Theme.AppCompat.NoActionBar"></application>
-    	
+    <android xmlns:android="http://schemas.android.com/apk/res/android">
+        <application android:theme="@style/Theme.AppCompat.NoActionBar"/>
     </android>
     <mobileweb>
         <precache/>
@@ -55,7 +57,11 @@
         </splash>
         <theme>default</theme>
     </mobileweb>
-    <modules/>
+    <modules>
+        <module platform="android">ti.cloudpush</module>
+        <module platform="iphone">com.urbanairship</module>
+        <module platform="android">com.urbanairship</module>
+    </modules>
     <deployment-targets>
         <target device="android">true</target>
         <target device="ipad">true</target>
