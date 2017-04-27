@@ -67,17 +67,9 @@ $.back.addEventListener('click', function() {
 $.continueAsGuest.addEventListener('click', function() {
 
 	// Check if default user is already sightned in, skip this step and download all the data TODO
-
-	var data = {
-		username : 'festforum@buzzplay.com',
-		password : 'festforum'
-	};
-	api.login(data, function(user) {
-
-		console.debug("Login success - user ", JSON.stringify(user));
-		//Titanium.App.Properties.removeProperty('appdata');
-		Titanium.App.Properties.setString('userid', user._id);
-
+	if (Titanium.App.Properties.getString('defaultUser') == true) {
+		console.debug("User has already signed in using defaultUser");
+		
 		var activeUser = Kinvey.User.getActiveUser();
 		var promise = Promise.resolve(activeUser);
 		if (activeUser !== null) {
@@ -86,21 +78,47 @@ $.continueAsGuest.addEventListener('click', function() {
 
 		console.debug("Active User - activeUser: ", JSON.stringify(activeUser));
 
-		Titanium.App.Properties.setString('defaultUser', true);
-
 		// TODO: download all the required data
 		console.log('// TODO: download all the required data');
 		// TODO: Ask for required permissions
 
 		$.win.close();
-
-	}, function(error) {
-		Alloy.Globals.error(L('err_generic'), {
-			zIndex : 999,
-			persistent : false,
-			view : $.container
+	}
+	else {
+		var data = {
+			username : 'festforum@buzzplay.com',
+			password : 'festforum'
+		};
+		api.login(data, function(user) {
+	
+			console.debug("Login success - user ", JSON.stringify(user));
+			//Titanium.App.Properties.removeProperty('appdata');
+			Titanium.App.Properties.setString('userid', user._id);
+	
+			var activeUser = Kinvey.User.getActiveUser();
+			var promise = Promise.resolve(activeUser);
+			if (activeUser !== null) {
+				promise = activeUser.me();
+			}
+	
+			console.debug("Active User - activeUser: ", JSON.stringify(activeUser));
+	
+			Titanium.App.Properties.setString('defaultUser', true);
+	
+			// TODO: download all the required data
+			console.log('// TODO: download all the required data');
+			// TODO: Ask for required permissions
+	
+			$.win.close();
+	
+		}, function(error) {
+			Alloy.Globals.error(L('err_generic'), {
+				zIndex : 999,
+				persistent : false,
+				view : $.container
+			});
 		});
-	});
+	}
 });
 
 $.prev.addEventListener('click', function() {
