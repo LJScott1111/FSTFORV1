@@ -15,7 +15,7 @@
 	url: '/graphics/launch_video.mov',
 	mediaControlStyle: Titanium.Media.VIDEO_CONTROL_NONE,
 	scalingMode : Titanium.Media.VIDEO_SCALING_ASPECT_FIT,
-	// fullscreen: true,
+	// fullscreen: true
 	focusable: false
 }
 

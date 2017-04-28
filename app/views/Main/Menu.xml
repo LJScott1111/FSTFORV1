@@ -3,7 +3,19 @@
 		<View id="iosHeader" platform="ios" />
 		<ScrollView class="container padding-bottom">
 
-			<Require id="logout" src="Misc/MenuButton" title="L('logout').toUpperCase()" />
+			<Require id="register" src="Misc/MenuButton" title="L('register').toUpperCase()" />
+			<Require id="speakers" src="Misc/MenuButton" title="L('speakers').toUpperCase()" />
+			<Require id="schedule" src="Misc/MenuButton" title="L('schedule').toUpperCase()" />
+			<Require id="sponsors" src="Misc/MenuButton" title="L('sponsors').toUpperCase()" />
+			<Require id="attendees" src="Misc/MenuButton" title="L('attendees').toUpperCase()" />
+			<Require id="newsSocial" src="Misc/MenuButton" title="L('newsSocial').toUpperCase()" />
+			<Require id="santaBarbara" src="Misc/MenuButton" title="L('santaBarbara').toUpperCase()" />
+			<Require id="pastEvents" src="Misc/MenuButton" title="L('pastEvents').toUpperCase()" />
+			<Require id="whoWeAre" src="Misc/MenuButton" title="L('whoWeAre').toUpperCase()" />
+			<Require id="inTheMedia" src="Misc/MenuButton" title="L('inTheMedia').toUpperCase()" />
+			<Require id="contact" src="Misc/MenuButton" title="L('contact').toUpperCase()" />
+			<Require id="privacyPolicy" src="Misc/MenuButton" title="L('privacyPolicy').toUpperCase()" />
+			<!-- <Require id="logout" src="Misc/MenuButton" title="L('logout').toUpperCase()" /> -->
 			
 		</ScrollView>
 	</View>

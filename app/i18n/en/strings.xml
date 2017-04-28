@@ -12,7 +12,24 @@
 	<string name="next">Next</string>
 	<string name="done">Done</string>
 	
+	<string name="register">Register</string>
+	<string name="speakers">Speakers</string>
+	<string name="schedule">Schedule</string>
+	<string name="sponsors">Sponsors</string>
+	<string name="attendees">Attendees</string>
+	<string name="newsSocial">News & Social</string>
+	<string name="santaBarbara">Santa Barbara 2017</string>
+	<string name="pastEvents">Past Events</string>
+	<string name="whoWeAre">Who We Are</string>
+	<string name="inTheMedia">In The Media</string>
+	<string name="contact">Contact</string>
+	<string name="privacyPolicy">Privacy Policy</string>
 	<string name="logout">Logout</string>
+	
+	<string name=""></string>
+	<string name=""></string>
+	<string name=""></string>
+	<string name=""></string>
 	
 	
 	
