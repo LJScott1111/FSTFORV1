@@ -16,7 +16,7 @@
 			<Require id="contact" src="Misc/MenuButton" title="L('contact').toUpperCase()" />
 			<Require id="privacyPolicy" src="Misc/MenuButton" title="L('privacyPolicy').toUpperCase()" />
 			<!-- <Require id="logout" src="Misc/MenuButton" title="L('logout').toUpperCase()" /> -->
-			
+
 		</ScrollView>
 	</View>
 </Alloy>
