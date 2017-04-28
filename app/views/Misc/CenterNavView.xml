@@ -1,0 +1,5 @@
+<Alloy>
+	<View class="layout-size">
+		<ImageView id="logo"></ImageView>
+	</View>
+</Alloy>

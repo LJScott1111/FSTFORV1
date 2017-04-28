@@ -84,7 +84,7 @@ if (!Titanium.App.Properties.getObject('userdata')) {
 /* ------------------------------------------ Defining Alloy variables ----------------------------------------------- */
 
 // Common function to open a window
-Alloy.Globals.openWindow = function(controller, arguments, newOne, titleText, centerView, rightView, leftView) {
+Alloy.Globals.openWindow = function(controller, arguments, newOne, titleText) {
 
 	if (Alloy.Globals.pageflow.getCurrentPage() == null || newOne === true) {
 
@@ -110,7 +110,7 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, titleText, ce
 				left : 'Misc/LeftNavView',
 				// right : 'Misc/NavRightMenu',
 				title : titleText,
-				center : centerView,
+				center : 'Misc/CenterNavView',
 				titleOptions : {
 					color : '#fff',
 					font : {
@@ -142,7 +142,7 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, titleText, ce
 				left : 'Misc/LeftNavView',
 				right : rightView,
 				title : titleText,
-				center : centerView,
+				center : 'Misc/CenterNavView',
 				titleOptions : {
 					color : '#fff',
 					font : {
