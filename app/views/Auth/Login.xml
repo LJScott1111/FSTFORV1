@@ -2,7 +2,6 @@
 	<Window id="win" class="vertical-layout" backgroundColor="#000">
 		<View id="container" class="absolute-layout height-size-width-fill">
 			<VideoPlayer id="launchVideo" ></VideoPlayer>
-			<View class="iosHeader" platform="ios" />
 			<View id="authView" class="layout-fill padding-top-zero">
 				<Label id="continueAsGuest" class="color-white font-16" bottom="80dp" text="L('continueAsGuest')"></Label>
 				<View class="absolute-layout height-size-width-fill padding-bottom-zero" zIndex="99">
