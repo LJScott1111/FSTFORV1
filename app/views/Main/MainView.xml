@@ -1,5 +1,10 @@
 <Alloy>
-	<View class="container" id="vwMain">
-		<Label>TEST</Label>
+	<View class="layout-fill" id="vwMain">
+		<ScrollView id="mainNav" class="scrollview-normal vertical-layout">
+			<View id="blockOne" class="padding-left-zero padding-top-zero height-size-width-fill"></View>
+			<View id="blockTwo" class="padding-left-zero padding-top-zero height-size-width-fill"></View>
+			<View id="blockThree" class="padding-left-zero padding-top-zero height-size-width-fill"></View>
+			<View id="blockFour" class="padding-left-zero padding-top-zero height-size-width-fill"></View>
+		</ScrollView>
 	</View>
 </Alloy>

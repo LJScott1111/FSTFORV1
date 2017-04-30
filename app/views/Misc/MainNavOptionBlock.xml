@@ -1,0 +1,5 @@
+<Alloy>
+	<View id="optionBlock" backgroundColor="#000">
+		<Label id="optionLabel" class="padding-top padding-left font-18 color-white"></Label>
+	</View>
+</Alloy>
