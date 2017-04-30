@@ -1,5 +1,4 @@
 var nsMenu = {};
-var api = Alloy.Globals.API;
 
 $.register.button.addEventListener('click', function() {
 
@@ -13,12 +12,9 @@ $.speakers.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
 
-	var appdata = Titanium.App.Properties.getObject('appdata', {});
-
 	var schedule = {};
 
-	Alloy.Globals.openWindow('Speakers', {
-		appdata : Titanium.App.Properties.getObject('appdata', {})
+	Alloy.Globals.openWindow('Speakers/Speakers', {
 	}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
 });
 

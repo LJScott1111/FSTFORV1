@@ -83,8 +83,7 @@ $.continueAsGuest.addEventListener('click', function() {
 		// TODO: Ask for required permissions
 
 		$.win.close();
-	}
-	else {
+	} else {
 		var data = {
 			username : 'festforum@buzzplay.com',
 			password : 'festforum'
@@ -280,7 +279,5 @@ nsLogin.init = function() {
 	};
 
 	// Setting blank object
-	Titanium.App.Properties.setObject('appdata', Alloy.Globals.appData);
-
 	nsLogin.resetPageState();
 }();
