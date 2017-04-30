@@ -12,8 +12,6 @@ $.speakers.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
 
-	var schedule = {};
-
 	Alloy.Globals.openWindow('Speakers/Speakers', {}, true);
 });
 
