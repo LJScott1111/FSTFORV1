@@ -14,8 +14,7 @@ $.speakers.button.addEventListener('click', function() {
 
 	var schedule = {};
 
-	Alloy.Globals.openWindow('Speakers/Speakers', {
-	}, true, null, 'misc/center_logo', 'misc/right_logo_grid');
+	Alloy.Globals.openWindow('Speakers/Speakers', {}, true);
 });
 
 $.schedule.button.addEventListener('click', function() {
