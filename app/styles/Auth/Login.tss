@@ -1,0 +1,40 @@
+
+"#win": {
+	zIndex: 1
+}
+
+// "#win[platform=ios]": {
+	// modal: true
+// }
+
+"#launchVideo": {
+	autoplay: true,
+	repeatMode: true,
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL,
+	url: '/graphics/launch_video.mov',
+	mediaControlStyle: Titanium.Media.VIDEO_CONTROL_NONE,
+	scalingMode : Titanium.Media.VIDEO_SCALING_ASPECT_FIT,
+	// fullscreen: true
+	focusable: false
+}
+
+".loginButtons": {
+	width: '49.8%',
+	height: '50dp'
+}
+
+"#login": {
+	backgroundColor: '#9a0203'
+}
+
+"#signup": {
+	backgroundColor: '#13acca'
+}
+
+'.prevNextButtonsGroup': {
+	
+	borderColor: '#fff',
+	borderRadius: '5dp',
+	borderWidth: '1dp'
+}

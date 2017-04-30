@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="app_name">Fest Forum</string>
+	
+	<string name="continueAsGuest">Continue as a Guest</string>
+	<string name="login">LOGIN</string>
+	<string name="signup">SIGNUP</string>
+	<string name="email_address">Email address</string>
+	<string name="password">Password</string>
+	<string name="confirm_password">Confirm Password</string>
+	<string name="prev">Prev</string>
+	<string name="next">Next</string>
+	<string name="done">Done</string>
+	
+	<string name="register">Register</string>
+	<string name="speakers">Speakers</string>
+	<string name="schedule">Schedule</string>
+	<string name="sponsors">Sponsors</string>
+	<string name="attendees">Attendees</string>
+	<string name="newsSocial">News & Social</string>
+	<string name="santaBarbara">Santa Barbara 2017</string>
+	<string name="pastEvents">Past Events</string>
+	<string name="whoWeAre">Who We Are</string>
+	<string name="inTheMedia">In The Media</string>
+	<string name="contact">Contact</string>
+	<string name="privacyPolicy">Privacy Policy</string>
+	<string name="logout">Logout</string>
+	
+	<string name=""></string>
+	<string name=""></string>
+	<string name=""></string>
+	<string name=""></string>
+	
+	
+	
+	<string name="err_generic">Some error occured. Please try again some time.</string>
+	<string name="err_invalidEmail">Please enter a valid email address.</string>
+	<string name="err_password">Password should be minimum of 5 character long.</string>
+	<string name="err_confirmPassword">Passwords do not match.</string>
+</resources>

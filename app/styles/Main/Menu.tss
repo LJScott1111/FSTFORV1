@@ -1,0 +1,21 @@
+
+".container": {
+	width: '250dp',
+	layout: 'vertical',
+	contentHeight: 'auto',
+	left: 0,
+	top: '40dp',
+	height: Titanium.UI.FILL
+}
+
+"#iosHeader": {
+	width: '100%',
+	height: '20dp',
+	top: 0,
+	left: 0
+}
+
+"#menuWrapper": {
+	layout: 'vertical',
+	backgroundColor: '#000000'
+}

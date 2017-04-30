@@ -1,0 +1,5 @@
+<Alloy>
+	<View class="container" id="vwMain">
+		<Label>TEST</Label>
+	</View>
+</Alloy>
