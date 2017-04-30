@@ -82,6 +82,7 @@ if (!Titanium.App.Properties.getObject('userdata')) {
 };
 
 /* ------------------------------------------ Defining Alloy variables ----------------------------------------------- */
+Alloy.Globals.scheduleEventListeners = [];
 
 // Common function to open a window
 Alloy.Globals.openWindow = function(controller, arguments, newOne, titleText) {
@@ -159,3 +160,134 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, titleText) {
 		currentPage = controller;
 	}
 };
+
+Alloy.Globals.getAndStoreData = function(callback) {
+
+	Alloy.Globals.loading.show();
+	// Alloy.Globals.getBanners();
+
+	var api = require('Api');;
+	var count = 0,
+	    fails = 0;
+
+	var getBandList = new api.getBandList(function(data) {
+
+		count++;
+		console.debug("count++", count);
+		if (count === 3) {
+			var fetchedData = Alloy.Globals.combinedDetails();
+			callback(fetchedData);
+		}
+
+	}, function(error) {
+
+		fails++;
+		console.debug("fails ", fails);
+		callback(false);
+
+	});
+	var getVenueList = new api.getVenueList(function(data) {
+
+		count++;
+		console.debug("count++", count);
+		if (count === 3) {
+			var fetchedData = Alloy.Globals.combinedDetails();
+			callback(fetchedData);
+		}
+
+	}, function(error) {
+
+		fails++;
+		console.debug("fails ", fails);
+		callback(false);
+
+	});
+	var getShowList = new api.getShows(function(data) {
+
+		count++;
+		console.debug("count++", count);
+		if (count === 3) {
+			var fetchedData = Alloy.Globals.combinedDetails();
+			callback(fetchedData);
+		}
+
+	}, function(error) {
+
+		fails++;
+		console.debug("fails ", fails);
+		callback(false);
+
+	});
+};
+
+Alloy.Globals.combinedDetails = function() {
+
+	var appdata = Titanium.App.Properties.getObject('appdata', {});
+	var combinedData = [];
+
+	/*for (var i = 0,bandLen = appdata.bands.length; i < bandLen; i++) {
+	 var bandProfile = {};
+	 bandProfile.bandDetails = appdata.bands[i];
+
+	 for (var j = 0,showLen = appdata.shows.length; j < showLen; j++) {
+
+	 if (appdata.shows[j].band_id === bandProfile.bandDetails._id) {
+	 bandProfile.showDetails = JSON.parse(JSON.stringify(appdata.shows[j]));
+	 // } else {
+	 // continue;
+
+	 for (var k = 0,venueLen = appdata.venues.length; k < venueLen; k++) {
+	 if (bandProfile.showDetails.venue_id === appdata.venues[k]._id) {
+	 bandProfile.venueDetails = JSON.parse(JSON.stringify(appdata.venues[k]));
+	 combinedData.push(bandProfile);
+	 }
+	 }
+	 }
+	 }
+	 }*/
+
+	for (var j = 0,
+	    showLen = appdata.shows.length; j < showLen; j++) {
+		var bandProfile = {};
+		bandProfile.showDetails = JSON.parse(JSON.stringify(appdata.shows[j]));
+		// Find the matching band
+		for (var i = 0,
+		    bandLen = appdata.bands.length; i < bandLen; i++) {
+			if (appdata.bands[i]._id == bandProfile.showDetails.band_id) {
+				bandProfile.bandDetails = JSON.parse(JSON.stringify(appdata.bands[i]));
+				break;
+			}
+		}
+		// Find the matching venue
+		for (var k = 0,
+		    venueLen = appdata.venues.length; k < venueLen; k++) {
+			if (appdata.venues[k]._id == bandProfile.showDetails.venue_id) {
+				bandProfile.venueDetails = JSON.parse(JSON.stringify(appdata.venues[k]));
+				break;
+			}
+		}
+		combinedData.push(bandProfile);
+	}
+
+	console.debug("JSON.stringify(combinedData) ", JSON.stringify(combinedData));
+	// Setting all details in appdata
+	appdata.details = JSON.parse(JSON.stringify(combinedData));
+	Titanium.App.fireEvent('get_next_show');
+	Titanium.App.Properties.setObject('appdata', appdata);
+	Alloy.Globals.loading.hide();
+
+	console.debug("appdata details ", JSON.stringify(Titanium.App.Properties.getObject('appdata')));
+	return true;
+};
+
+// Format date object
+Alloy.Globals.getFormattedDate = function(timestamp) {
+	var momentjs = require('moment');
+	var dateObj = momentjs(timestamp * 1000);
+	var dateString = [];
+	dateString[0] = dateObj.format('dddd, MMMM, Do');
+	dateString[1] = dateObj.format('h:mm a');
+	console.debug(JSON.stringify(dateString));
+	return dateString;
+};
+

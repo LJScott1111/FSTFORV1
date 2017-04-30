@@ -76,6 +76,7 @@ api.logout = function(args, success, fail) {
 	}
 };
 
+// Get user schedule
 api.getUserSchedule = function(args, success, fail) {
 	// Local DB
 };

@@ -65,8 +65,10 @@
 * 	LAYOUT STYLE GLOBAL
 */
 
-'.vertical-layout': {
-	layout: 'vertical'
+".vertical_layout": {
+	layout: 'vertical',
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.SIZE
 }
 
 '.horizontal-layout': {
