@@ -28,6 +28,7 @@ nsMainView.postlayoutCall = function() {
 
 nsMainView.openSpeaker = function() {
 
+	Alloy.Globals.openWindow('Speakers/Speakers', {}, true);
 };
 
 nsMainView.openSchedule = function() {
