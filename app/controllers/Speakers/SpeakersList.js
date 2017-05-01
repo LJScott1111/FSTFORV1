@@ -69,6 +69,7 @@ nsSpeakersList.displaySpeakers = function() {
 			});
 
 			currSection.appendItems(list);
+			list = [];
 			lastL = l;
 		}
 	}
