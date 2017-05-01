@@ -143,7 +143,7 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, titleText) {
 			navBar : {
 				backgroundColor : '#000',
 				left : 'Misc/LeftNavView',
-				right : rightView,
+				// right : rightView,
 				title : titleText,
 				center : 'Misc/CenterNavView',
 				titleOptions : {

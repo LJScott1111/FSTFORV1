@@ -4,6 +4,7 @@ var utils = Alloy.Globals.UTILS;
 $.speakersListView.addEventListener('itemclick', function(e) {
 	var item = e.section.getItemAt(e.itemIndex);
 	console.log('SPEAKER ', item.properties.data);
+	Alloy.Globals.openWindow('Speakers/Profile', item.properties.data, true);
 });
 
 nsSpeakersList.displaySpeakers = function() {
