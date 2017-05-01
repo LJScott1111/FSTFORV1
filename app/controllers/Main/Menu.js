@@ -33,6 +33,7 @@ $.attendees.button.addEventListener('click', function() {
 $.newsSocial.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
+	Alloy.Globals.openWindow('MiscScreens/NewsSocial', {}, true);
 });
 
 $.santaBarbara.button.addEventListener('click', function() {

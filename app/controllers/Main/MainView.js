@@ -52,7 +52,7 @@ nsMainView.openAttendees = function() {
 };
 
 nsMainView.openSocial = function() {
-
+	Alloy.Globals.openWindow('MiscScreens/NewsSocial', {}, true);
 };
 
 nsMainView.openRegister = function() {

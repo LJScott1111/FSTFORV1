@@ -1,0 +1,11 @@
+
+".underline": {
+	height: '1dp',
+	backgroundColor: '#dbdbd8',
+	bottom: '5dp',
+	visible: false
+}
+
+".social-labels": {
+	color: '#dbdbd8'
+}
