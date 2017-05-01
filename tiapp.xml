@@ -20,6 +20,7 @@
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <property name="run-on-main-thread" type="bool">true</property>
     <ios>
+    	<team-id>RM2A9K7S83</team-id>
         <enable-launch-screen-storyboard>false
         	</enable-launch-screen-storyboard>
         <use-app-thinning>true</use-app-thinning>
