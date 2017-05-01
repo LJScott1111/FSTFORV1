@@ -62,16 +62,15 @@ nsMainView.openRegister = function() {
 	}, true);
 };
 
-nsMainView.createBlock = function(block, labelText, callback, side) {
+nsMainView.createBlock = function(block, data, callback, side) {
 
 	var leftBlockProp = {
 		properties : {
 			left : '4dp',
 			top : '4dp',
-			borderColor : '#000',
 			width : blockWidth,
 			height : blockWidth,
-			// backgroundImage: bgImage
+			backgroundImage : data.bgImage
 		}
 	};
 
@@ -79,19 +78,18 @@ nsMainView.createBlock = function(block, labelText, callback, side) {
 		properties : {
 			right : '4dp',
 			top : '4dp',
-			borderColor : '#000',
 			width : blockWidth,
 			height : blockWidth,
-			// backgroundImage: bgImage
+			backgroundImage : data.bgImage
 		}
 	};
 
 	if (side == 'left') {
-		leftBlockProp.text = labelText;
+		leftBlockProp.text = data.labelText;
 		leftBlockProp.callback = callback;
 		block.add(Alloy.createController('Misc/MainNavOptionBlock', leftBlockProp).getView());
 	} else {
-		rightBlockProp.text = labelText;
+		rightBlockProp.text = data.labelText;
 		rightBlockProp.callback = callback;
 		block.add(Alloy.createController('Misc/MainNavOptionBlock', rightBlockProp).getView());
 	}
@@ -100,16 +98,44 @@ nsMainView.createBlock = function(block, labelText, callback, side) {
 nsMainView.init = function() {
 	$.vwMain.addEventListener('postlayout', nsMainView.postlayoutCall);
 
-	nsMainView.createBlock($.blockOne, L('speakers'), nsMainView.openSpeaker, 'left');
-	nsMainView.createBlock($.blockOne, L('schedule'), nsMainView.openSchedule, 'right');
+	nsMainView.createBlock($.blockOne, {
+		labelText : L('speakers'),
+		bgImage : '/graphics/speakers.png'
+	}, nsMainView.openSpeaker, 'left');
 
-	nsMainView.createBlock($.blockTwo, L('mySchedule'), nsMainView.openMySchedule, 'left');
-	nsMainView.createBlock($.blockTwo, L('chat'), nsMainView.openChat, 'right');
+	nsMainView.createBlock($.blockOne, {
+		labelText : L('schedule'),
+		bgImage : '/graphics/schedule.png'
+	}, nsMainView.openSchedule, 'right');
 
-	nsMainView.createBlock($.blockThree, L('sponsors'), nsMainView.openSponsors, 'left');
-	nsMainView.createBlock($.blockThree, L('attendees'), nsMainView.openAttendees, 'right');
+	nsMainView.createBlock($.blockTwo, {
+		labelText : L('mySchedule'),
+		bgImage : '/graphics/myschedule.png'
+	}, nsMainView.openMySchedule, 'left');
 
-	nsMainView.createBlock($.blockFour, L('social'), nsMainView.openSocial, 'left');
-	nsMainView.createBlock($.blockFour, L('register'), nsMainView.openRegister, 'right');
+	nsMainView.createBlock($.blockTwo, {
+		labelText : L('chat'),
+		bgImage : '/graphics/chat.png'
+	}, nsMainView.openChat, 'right');
+
+	nsMainView.createBlock($.blockThree, {
+		labelText : L('sponsors'),
+		bgImage : '/graphics/sponsors.png'
+	}, nsMainView.openSponsors, 'left');
+
+	nsMainView.createBlock($.blockThree, {
+		labelText : L('attendees'),
+		bgImage : '/graphics/attendees.png'
+	}, nsMainView.openAttendees, 'right');
+
+	nsMainView.createBlock($.blockFour, {
+		labelText : L('social'),
+		bgImage : '/graphics/social.png'
+	}, nsMainView.openSocial, 'left');
+
+	nsMainView.createBlock($.blockFour, {
+		labelText : L('register'),
+		bgImage : '/graphics/register.png'
+	}, nsMainView.openRegister, 'right');
 
 }();
