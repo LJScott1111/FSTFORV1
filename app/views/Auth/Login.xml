@@ -3,6 +3,8 @@
 		<View id="container" class="absolute-layout height-size-width-fill">
 			<VideoPlayer id="launchVideo" ></VideoPlayer>
 			<View id="authView" class="layout-fill padding-top-zero">
+				<ImageView top="25dp" height="130dp" image="/graphics/logo.png"></ImageView>
+				<Label top="180dp" text="L('welcomeText').toUpperCase()" textAlign="Titanium.UI.TEXT_ALIGNMENT_CENTER" class="font-22 color-white"></Label>
 				<Label id="continueAsGuest" class="color-white font-16" bottom="80dp" text="L('continueAsGuest')"></Label>
 				<View class="absolute-layout height-size-width-fill padding-bottom-zero" zIndex="99">
 					<Button class="loginButtons padding-left-zero font-18 font-bold" id="login" title="L('login')"></Button>
