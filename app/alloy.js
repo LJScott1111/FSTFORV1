@@ -64,8 +64,8 @@ Alloy.Globals.appData = {
 };
 
 Alloy.Globals.loading = Alloy.createWidget('nl.fokkezb.loading');
-Alloy.Globals.UTILS = require('Utils');
-Alloy.Globals.API = require('Api');
+Alloy.Globals.UTILS = require('/Utils');
+Alloy.Globals.API = require('/Api');
 
 // TOAST - https://github.com/FokkeZB/nl.fokkezb.toast
 var toast = Alloy.createWidget('nl.fokkezb.toast', 'global', {
