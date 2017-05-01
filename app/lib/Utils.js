@@ -16,7 +16,6 @@ utils.validateZeroLength = function(string) {
 
 utils.getDateFormatted = function(date) {
 	var momentjs = require("alloy/moment");
-	var dateObj = momentjs(date);
 	var dateString = "";
 	dateString = momentjs(date).format('YYYY-MM-DD');
 	return dateString;

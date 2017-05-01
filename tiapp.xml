@@ -16,7 +16,7 @@
     <!-- Shraddha ID -->
     <!--<guid>912d6693-d5c6-4084-9134-ded88d697d9d</guid>-->
     <!-- Eric's ID -->
-    <guid>a326d999-7888-488d-9777-3fe6782d3af7</guid>
+    <guid>196f8ef3-dee8-47b8-9777-06c2e4d53cb1</guid>
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <property name="run-on-main-thread" type="bool">true</property>
     <ios>
@@ -69,7 +69,7 @@
         <target device="iphone">true</target>
         <target device="mobileweb">false</target>
     </deployment-targets>
-    <sdk-version>6.0.3.GA</sdk-version>
+    <sdk-version>6.0.4.GA</sdk-version>
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
     </plugins>
