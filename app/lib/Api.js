@@ -76,6 +76,35 @@ api.logout = function(args, success, fail) {
 	}
 };
 
+api.getSpeakers = function(success, fail) {
+
+	var dataStore = Kinvey.DataStore.collection('FestForumSpeakers', Kinvey.DataStoreType.Sync);
+
+	// Pull data from the backend and save it to the cache.
+	var promise = dataStore.pull().then(function onSuccess(entities) {
+		console.log('SPEAKERS! ', JSON.stringify(entities));
+		success(entities);
+	}).catch(function onError(error) {
+		console.error('SPEAKERS ERROR! ', JSON.stringify(error));
+		fail();
+	});
+
+	/*
+	 var stream = dataStore.find();
+	 stream.subscribe(function onNext(entity) {
+	 // ...
+	 console.log('RECEIVING ENTITIES ', JSON.stringify(entity));
+	 }, function onError(error) {
+	 // ...
+	 console.error('ERROR SPEAKERS ', JSON.stringify(error));
+	 }, function onComplete(data) {
+	 // ...
+	 console.log('SUCCESS SPEAKERS', JSON.stringify(data));
+	 });
+	 */
+
+};
+
 // Get user schedule
 api.getUserSchedule = function(args, success, fail) {
 	// Local DB

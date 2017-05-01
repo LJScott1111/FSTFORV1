@@ -1,0 +1,9 @@
+
+"#vwMainList": {
+	backgroundColor: '#000'
+}
+
+"#image": {
+	height: '40dp',
+	width: '40dp'
+}

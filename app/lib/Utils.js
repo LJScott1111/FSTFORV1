@@ -22,4 +22,41 @@ utils.getDateFormatted = function(date) {
 	return dateString;
 };
 
-module.exports = utils;
+// Function to sort array
+utils.sortArray = function(prop) {
+	return function(a, b) {
+		if (a[prop] > b[prop]) {
+			return 1;
+		} else if (a[prop] < b[prop]) {
+			return -1;
+		}
+		return 0;
+	};
+};
+
+utils.downloadAppdata = function(fail, callback) {
+
+	Alloy.Globals.loading.show();
+	Alloy.Globals.API.getSpeakers(function(speakersData) {
+
+		Alloy.Globals.loading.hide();
+		console.log('SPEAKERS DOWNLOADED ', JSON.stringify(speakersData));
+		
+		// Save the data in local
+		var appdata = Titanium.App.Properties.getObject('appdata');
+		appdata.speakers = JSON.parse(JSON.stringify(speakersData));
+		Titanium.App.Properties.setObject('appdata', appdata);
+
+		if (callback) {
+			callback();
+		};
+	}, function(error) {
+		Alloy.Globals.loading.hide();
+		if (fail) {
+			fail();
+		};
+		console.error('SPEAKERS FAILED');
+	});
+};
+
+module.exports = utils; 

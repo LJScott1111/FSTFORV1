@@ -4,6 +4,15 @@ var signupStage = 1;
 var api = Alloy.Globals.API;
 var utils = Alloy.Globals.UTILS;
 
+nsLogin.downloadData = function() {
+	console.error('DOWNLOADING DATA ');
+	api.getSpeakers(function(data) {
+		console.log('SPEAKERS DOWNLOADED');
+	}, function(error) {
+		console.error('SPEAKERS FAILED');
+	});
+};
+
 nsLogin.getLoginView = function() {
 	$.authView.visible = false;
 	$.signupView.visible = true;
@@ -79,10 +88,19 @@ $.continueAsGuest.addEventListener('click', function() {
 		console.debug("Active User - activeUser: ", JSON.stringify(activeUser));
 
 		// TODO: download all the required data
-		console.log('// TODO: download all the required data');
-		// TODO: Ask for required permissions
+		console.log('Downloading all the required data...');
+		utils.downloadAppdata(function(error) {
+			Alloy.Globals.error(L('err_dataDownloadFailed'), {
+				zIndex : 999,
+				persistent : false,
+				view : $.container
+			});
+		}, function(success) {
+			// TODO: Ask for required permissions
 
-		$.win.close();
+			$.win.close();
+		});
+
 	} else {
 		var data = {
 			username : 'festforum@buzzplay.com',
@@ -105,10 +123,18 @@ $.continueAsGuest.addEventListener('click', function() {
 			Titanium.App.Properties.setString('defaultUser', true);
 
 			// TODO: download all the required data
-			console.log('// TODO: download all the required data');
-			// TODO: Ask for required permissions
+			console.log('Downloading all the required data...');
+			utils.downloadAppdata(function(error) {
+				Alloy.Globals.error(L('err_dataDownloadFailed'), {
+					zIndex : 999,
+					persistent : false,
+					view : $.container
+				});
+			}, function() {
+				// TODO: Ask for required permissions
 
-			$.win.close();
+				$.win.close();
+			});
 
 		}, function(error) {
 			Alloy.Globals.error(L('err_generic'), {
@@ -272,6 +298,7 @@ nsLogin.resetPageState = function() {
 
 nsLogin.init = function() {
 
+	Titanium.App.Properties.setObject('appdata', Alloy.Globals.appData);
 	if (OS_ANDROID) {
 		setInterval(function() {
 			$.launchVideo.play();

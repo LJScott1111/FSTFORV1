@@ -60,7 +60,10 @@ Alloy.Globals.appData = {
 	"details" : [],
 	"bands" : [],
 	"shows" : [],
-	"venues" : []
+	"venues" : [],
+	speakers : [],
+	sponsors : [],
+	attendees : []
 };
 
 Alloy.Globals.loading = Alloy.createWidget('nl.fokkezb.loading');
@@ -159,5 +162,4 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, titleText) {
 		currentPage = controller;
 	}
 };
-
 

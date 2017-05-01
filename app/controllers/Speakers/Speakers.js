@@ -13,10 +13,54 @@ nsSpeakers.propGrey = {
 	touchEnabled : true
 };
 
-nsSpeakers.init = function() {
+nsSpeakers.openSpeakers = function() {
 
-	console.debug('nsSpeakers.init CALLED........');
+	console.log('nsSpeakers.openSpeakers CALLED!!!');
+	$.mainContent.removeAllChildren();
+	$.myScheduleIcon.applyProperties(nsSpeakers.propGrey);
+	$.myScheduleText.applyProperties(nsSpeakers.propGrey);
 
+	$.speakersIcon.applyProperties(nsSpeakers.propRed);
+	$.speakersText.applyProperties(nsSpeakers.propRed);
+
+	$.scheduleIcon.applyProperties(nsSpeakers.propGrey);
+	$.scheduleText.applyProperties(nsSpeakers.propGrey);
+
+	var speakersList = Alloy.createController('Speakers/SpeakersList').getView();
+	$.mainContent.add(speakersList);
 };
 
-nsSpeakers.init();
+nsSpeakers.openMySchedule = function() {
+
+	$.mainContent.removeAllChildren();
+	$.myScheduleIcon.applyProperties(nsSpeakers.propRed);
+	$.myScheduleText.applyProperties(nsSpeakers.propRed);
+
+	$.speakersIcon.applyProperties(nsSpeakers.propGrey);
+	$.speakersText.applyProperties(nsSpeakers.propGrey);
+
+	$.scheduleIcon.applyProperties(nsSpeakers.propGrey);
+	$.scheduleText.applyProperties(nsSpeakers.propGrey);
+};
+
+nsSpeakers.openSchedule = function() {
+
+	$.mainContent.removeAllChildren();
+	$.myScheduleIcon.applyProperties(nsSpeakers.propGrey);
+	$.myScheduleText.applyProperties(nsSpeakers.propGrey);
+
+	$.speakersIcon.applyProperties(nsSpeakers.propGrey);
+	$.speakersText.applyProperties(nsSpeakers.propGrey);
+
+	$.scheduleIcon.applyProperties(nsSpeakers.propRed);
+	$.scheduleText.applyProperties(nsSpeakers.propRed);
+};
+
+nsSpeakers.init = function() {
+
+	nsSpeakers.openSpeakers();
+
+	$.mySchedule.addEventListener('click', nsSpeakers.openMySchedule);
+	$.schedule.addEventListener('click', nsSpeakers.openSchedule);
+	$.speakers.addEventListener('click', nsSpeakers.openSpeakers);
+}();
