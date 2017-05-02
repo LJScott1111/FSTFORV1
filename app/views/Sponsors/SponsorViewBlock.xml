@@ -1,0 +1,5 @@
+<Alloy>
+	<View class="layout-size vertical-layout">
+		<ImageView id="sponsorImage" class="padding-top" height="60dp"></ImageView>
+	</View>
+</Alloy>

@@ -57,10 +57,6 @@ Alloy.Globals.globalValues = {
 };
 
 Alloy.Globals.appData = {
-	"details" : [],
-	"bands" : [],
-	"shows" : [],
-	"venues" : [],
 	speakers : [],
 	sponsors : [],
 	attendees : []

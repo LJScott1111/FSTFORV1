@@ -45,6 +45,7 @@ nsMainView.openChat = function() {
 
 nsMainView.openSponsors = function() {
 
+	Alloy.Globals.openWindow('Sponsors/Sponsors', {}, true);
 };
 
 nsMainView.openAttendees = function() {

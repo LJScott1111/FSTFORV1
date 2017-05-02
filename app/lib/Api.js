@@ -105,6 +105,20 @@ api.getSpeakers = function(success, fail) {
 
 };
 
+api.getSponsors = function(success, fail){
+
+	var dataStore = Kinvey.DataStore.collection('FestForumSponsors', Kinvey.DataStoreType.Sync);
+
+	// Pull data from the backend and save it to the cache.
+	var promise = dataStore.pull().then(function onSuccess(entities) {
+		console.log('SPONSORS! ', JSON.stringify(entities));
+		success(entities);
+	}).catch(function onError(error) {
+		console.error('SPONSORS ERROR! ', JSON.stringify(error));
+		fail();
+	});
+};
+
 // Get user schedule
 api.getUserSchedule = function(args, success, fail) {
 	// Local DB

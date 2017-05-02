@@ -38,17 +38,28 @@ utils.downloadAppdata = function(fail, callback) {
 	Alloy.Globals.loading.show();
 	Alloy.Globals.API.getSpeakers(function(speakersData) {
 
-		Alloy.Globals.loading.hide();
 		console.log('SPEAKERS DOWNLOADED ', JSON.stringify(speakersData));
-		
+
 		// Save the data in local
 		var appdata = Titanium.App.Properties.getObject('appdata');
 		appdata.speakers = JSON.parse(JSON.stringify(speakersData));
-		Titanium.App.Properties.setObject('appdata', appdata);
 
-		if (callback) {
-			callback();
-		};
+		Alloy.Globals.API.getSponsors(function(sponsorsData) {
+
+			Alloy.Globals.loading.hide();
+			appdata.sponsors = JSON.parse(JSON.stringify(sponsorsData));
+			Titanium.App.Properties.setObject('appdata', appdata);
+
+			if (callback) {
+				callback();
+			};
+		}, function(error) {
+			Alloy.Globals.loading.hide();
+			if (fail) {
+				fail();
+			};
+		});
+
 	}, function(error) {
 		Alloy.Globals.loading.hide();
 		if (fail) {
@@ -58,4 +69,4 @@ utils.downloadAppdata = function(fail, callback) {
 	});
 };
 
-module.exports = utils; 
+module.exports = utils;

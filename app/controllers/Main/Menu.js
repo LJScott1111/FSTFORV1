@@ -23,6 +23,7 @@ $.schedule.button.addEventListener('click', function() {
 $.sponsors.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
+	Alloy.Globals.openWindow('Sponsors/Sponsors', {}, true);
 });
 
 $.attendees.button.addEventListener('click', function() {
