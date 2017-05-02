@@ -2,9 +2,9 @@
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>com.buzzplay.festforums</id>
     <name>Fest Forums</name>
-    <version>1.0</version>
+    <version>1.0.0.1</version>
     <publisher>shraddhaporwal</publisher>
-    <url/>
+    <url>undefined</url>
     <description>undefined</description>
     <copyright>2017 by shraddhaporwal</copyright>
     <icon>appicon.png</icon>
@@ -20,7 +20,7 @@
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <property name="run-on-main-thread" type="bool">true</property>
     <ios>
-    	<team-id>RM2A9K7S83</team-id>
+        <team-id>RM2A9K7S83</team-id>
         <enable-launch-screen-storyboard>false
         	</enable-launch-screen-storyboard>
         <use-app-thinning>true</use-app-thinning>
@@ -43,6 +43,8 @@
                 <false/>
                 <key>UIStatusBarStyle</key>
                 <string>UIStatusBarStyleLightContent</string>
+                <key>NSPhotoLibraryUsageDescription</key>
+                <string>Photo Library Access Warning</string>
             </dict>
         </plist>
     </ios>
