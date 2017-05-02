@@ -1,8 +1,6 @@
 var nsSponsorView = {};
 
 nsSponsorView.setDimensions = function() {
-	console.log($.sponsorImage.rect.width);
-
 	var imageWidth = $.sponsorImage.rect.width;
 	var deviceWidth = Ti.Platform.displayCaps.platformWidth;
 

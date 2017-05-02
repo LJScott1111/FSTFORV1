@@ -133,6 +133,20 @@ api.getAttendees = function(success, fail) {
 	});
 };
 
+api.getSchedule = function(success, fail) {
+
+	var dataStore = Kinvey.DataStore.collection('FestForumSchedule', Kinvey.DataStoreType.Sync);
+
+	// Pull data from the backend and save it to the cache.
+	var promise = dataStore.pull().then(function onSuccess(entities) {
+		console.log('SCHEDULE! ', JSON.stringify(entities));
+		success(entities);
+	}).catch(function onError(error) {
+		console.error('SCHEDULE ERROR! ', JSON.stringify(error));
+		fail();
+	});
+};
+
 // Get user schedule
 api.getUserSchedule = function(args, success, fail) {
 	// Local DB

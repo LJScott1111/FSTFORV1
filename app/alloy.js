@@ -59,7 +59,8 @@ Alloy.Globals.globalValues = {
 Alloy.Globals.appData = {
 	speakers : [],
 	sponsors : [],
-	attendees : []
+	attendees : [],
+	schedule: []
 };
 
 Alloy.Globals.loading = Alloy.createWidget('nl.fokkezb.loading');

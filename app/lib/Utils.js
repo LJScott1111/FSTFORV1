@@ -38,8 +38,6 @@ utils.downloadAppdata = function(fail, callback) {
 	Alloy.Globals.loading.show();
 	Alloy.Globals.API.getSpeakers(function(speakersData) {
 
-		console.log('SPEAKERS DOWNLOADED ', JSON.stringify(speakersData));
-
 		// Save the data in local
 		var appdata = Titanium.App.Properties.getObject('appdata');
 		appdata.speakers = JSON.parse(JSON.stringify(speakersData));
@@ -50,13 +48,24 @@ utils.downloadAppdata = function(fail, callback) {
 
 			Alloy.Globals.API.getAttendees(function(attendeesData) {
 
-				Alloy.Globals.loading.hide();
 				appdata.attendees = JSON.parse(JSON.stringify(attendeesData));
-				Titanium.App.Properties.setObject('appdata', appdata);
 
-				if (callback) {
-					callback();
-				};
+				Alloy.Globals.API.getSchedule(function(scheduleData) {
+
+					Alloy.Globals.loading.hide();
+					appdata.schedule = JSON.parse(JSON.stringify(scheduleData));
+					Titanium.App.Properties.setObject('appdata', appdata);
+
+					if (callback) {
+						callback();
+					};
+				}, function(error) {
+					Alloy.Globals.loading.hide();
+					if (fail) {
+						fail();
+					};
+				});
+
 			}, function(error) {
 				Alloy.Globals.loading.hide();
 				if (fail) {
