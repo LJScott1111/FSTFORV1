@@ -29,6 +29,7 @@ $.sponsors.button.addEventListener('click', function() {
 $.attendees.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
+	Alloy.Globals.openWindow('Attendees/AttendeesList', {}, true);
 });
 
 $.newsSocial.button.addEventListener('click', function() {

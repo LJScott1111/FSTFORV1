@@ -50,6 +50,7 @@ nsMainView.openSponsors = function() {
 
 nsMainView.openAttendees = function() {
 
+	Alloy.Globals.openWindow('Attendees/AttendeesList', {}, true);
 };
 
 nsMainView.openSocial = function() {

@@ -105,7 +105,7 @@ api.getSpeakers = function(success, fail) {
 
 };
 
-api.getSponsors = function(success, fail){
+api.getSponsors = function(success, fail) {
 
 	var dataStore = Kinvey.DataStore.collection('FestForumSponsors', Kinvey.DataStoreType.Sync);
 
@@ -115,6 +115,20 @@ api.getSponsors = function(success, fail){
 		success(entities);
 	}).catch(function onError(error) {
 		console.error('SPONSORS ERROR! ', JSON.stringify(error));
+		fail();
+	});
+};
+
+api.getAttendees = function(success, fail) {
+
+	var dataStore = Kinvey.DataStore.collection('FestForumAttendees', Kinvey.DataStoreType.Sync);
+
+	// Pull data from the backend and save it to the cache.
+	var promise = dataStore.pull().then(function onSuccess(entities) {
+		console.log('ATTENDEES! ', JSON.stringify(entities));
+		success(entities);
+	}).catch(function onError(error) {
+		console.error('ATTENDEES ERROR! ', JSON.stringify(error));
 		fail();
 	});
 };

@@ -4,15 +4,6 @@ var signupStage = 1;
 var api = Alloy.Globals.API;
 var utils = Alloy.Globals.UTILS;
 
-nsLogin.downloadData = function() {
-	console.error('DOWNLOADING DATA ');
-	api.getSpeakers(function(data) {
-		console.log('SPEAKERS DOWNLOADED');
-	}, function(error) {
-		console.error('SPEAKERS FAILED');
-	});
-};
-
 nsLogin.getLoginView = function() {
 	$.authView.visible = false;
 	$.signupView.visible = true;

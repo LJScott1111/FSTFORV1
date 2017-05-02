@@ -46,13 +46,24 @@ utils.downloadAppdata = function(fail, callback) {
 
 		Alloy.Globals.API.getSponsors(function(sponsorsData) {
 
-			Alloy.Globals.loading.hide();
 			appdata.sponsors = JSON.parse(JSON.stringify(sponsorsData));
-			Titanium.App.Properties.setObject('appdata', appdata);
 
-			if (callback) {
-				callback();
-			};
+			Alloy.Globals.API.getAttendees(function(attendeesData) {
+
+				Alloy.Globals.loading.hide();
+				appdata.attendees = JSON.parse(JSON.stringify(attendeesData));
+				Titanium.App.Properties.setObject('appdata', appdata);
+
+				if (callback) {
+					callback();
+				};
+			}, function(error) {
+				Alloy.Globals.loading.hide();
+				if (fail) {
+					fail();
+				};
+			});
+
 		}, function(error) {
 			Alloy.Globals.loading.hide();
 			if (fail) {
