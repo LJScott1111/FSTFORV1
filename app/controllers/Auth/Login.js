@@ -87,6 +87,7 @@ $.continueAsGuest.addEventListener('click', function() {
 				view : $.container
 			});
 		}, function(success) {
+
 			// TODO: Ask for required permissions
 
 			$.win.close();
@@ -113,7 +114,6 @@ $.continueAsGuest.addEventListener('click', function() {
 
 			Titanium.App.Properties.setString('defaultUser', true);
 
-			// TODO: download all the required data
 			console.log('Downloading all the required data...');
 			utils.downloadAppdata(function(error) {
 				Alloy.Globals.error(L('err_dataDownloadFailed'), {

@@ -2,6 +2,7 @@ var nsMainView = {};
 // Calculate device width to set half of it as block height and width
 var deviceWidth = Ti.Platform.displayCaps.platformWidth;
 var blockWidth = deviceWidth * 0.485;
+var utils = Alloy.Globals.UTILS;
 
 nsMainView.postlayoutCall = function() {
 	// console.log('CHECK USER = ', Titanium.App.Properties.getString('defaultUser'));
@@ -16,7 +17,18 @@ nsMainView.postlayoutCall = function() {
 			}).getView().open();
 		} else {
 			console.log('USER ', user);
-			// Save user details TODO
+			// Downlaod required data
+			utils.downloadAppdata(function(error) {
+				Alloy.createController('Auth/Login', {
+					callback : function() {
+						console.log('CALLBACK!');
+					}
+				}).getView().open();
+
+			}, function() {
+				// Do nothing
+				
+			});
 		}
 	});
 
