@@ -5,10 +5,17 @@ nsSponsors.displaySponsors = function() {
 
 	var sponsors = Titanium.App.Properties.getObject('appdata').sponsors;
 	sponsors.sort(utils.sortArray('Tier'));
-	// console.log('SPONSORS -->', JSON.stringify(sponsors));
 
 	for (var i in sponsors) {
-		$.vwMain.add(Alloy.createController('Sponsors/SponsorViewBlock', sponsors[i]).getView());
+
+		var data = {
+			sponsor : JSON.parse(JSON.stringify(sponsors[i]))
+		};
+
+		if (i == 0) {
+			data.height = Titanium.UI.SIZE;
+		};
+		$.vwMain.add(Alloy.createController('Sponsors/SponsorViewBlock', data).getView());
 	}
 };
 

@@ -13,6 +13,10 @@ nsSponsorView.setDimensions = function() {
 };
 
 nsSponsorView.init = function() {
-	$.sponsorImage.image = $.args.image;
+
+	$.sponsorImage.image = $.args.sponsor.image;
+	if ($.args.height) {
+		$.sponsorImage.height = $.args.height;
+	};
 	$.sponsorImage.addEventListener('postlayout', nsSponsorView.setDimensions);
 }();
