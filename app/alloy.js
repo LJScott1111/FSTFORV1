@@ -100,7 +100,7 @@ Alloy.Globals.openWindow = function(controller, arguments, newOne, titleText) {
 				backgroundColor : 'transparent',
 				borderColor : 'transparent',
 				font : {
-					fontSize : '16dp',
+					fontSize : '22dp',
 					fontFamily : "FontAwesome"
 				},
 				hidden : newOne === true ? false : true
