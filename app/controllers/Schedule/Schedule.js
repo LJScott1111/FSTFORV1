@@ -3,8 +3,9 @@ var utils = Alloy.Globals.UTILS;
 var api = Alloy.Globals.API;
 var fullSchedule;
 var momentjs = require("alloy/moment");
-var thusdaySchedule = [];
-var fridaySchedule = [];
+var thusdaySchedule;
+var fridaySchedule;
+var firstload = true;
 
 function toggleStar(e) {
 
@@ -89,13 +90,17 @@ nsSchedule.filterSchedule = function() {
 	console.log('thusdaySchedule ', JSON.stringify(thusdaySchedule));
 	console.log('fridaySchedule ', JSON.stringify(fridaySchedule));
 
-	nsSchedule.showSchedule(thusdaySchedule);
+	if (firstload) {
+		nsSchedule.showSchedule(thusdaySchedule);
+		firstload = false;
+	}
 };
 
 $.thursdayView.addEventListener('click', function() {
 
 	$.thursdaySelected.backgroundColor = Alloy.Globals.globalValues.colors.theme;
 	$.fridaySelected.backgroundColor = 'transparent';
+	nsSchedule.init();
 	nsSchedule.showSchedule(thusdaySchedule);
 });
 
@@ -103,15 +108,19 @@ $.fridayView.addEventListener('click', function() {
 
 	$.fridaySelected.backgroundColor = Alloy.Globals.globalValues.colors.theme;
 	$.thursdaySelected.backgroundColor = 'transparent';
+	nsSchedule.init();
 	nsSchedule.showSchedule(fridaySchedule);
 });
 
 nsSchedule.init = function() {
+	
+	thusdaySchedule = [];
+	fridaySchedule = [];
 
 	fullSchedule = Titanium.App.Properties.getObject('appdata').schedule;
 	fullSchedule.sort(utils.sortArray('start_time'));
 
-	// addedToSchedule schedule status TODO
+	// Matching Userschedule to schedule
 	var userSchedule = Titanium.App.Properties.getObject('userSchedule');
 	userSchedule.sort(utils.sortArray('start_time'));
 
@@ -127,4 +136,6 @@ nsSchedule.init = function() {
 
 	// Filter Schedule
 	nsSchedule.filterSchedule();
-}();
+};
+
+nsSchedule.init();
