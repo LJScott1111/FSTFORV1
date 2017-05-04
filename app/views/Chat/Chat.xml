@@ -1,0 +1,13 @@
+<Alloy>
+  <!-- We will resize this view when the keyboard shows/hides via onKeyboardframechanged() -->
+  <View id="chatWindow">
+    <TextArea id="chat" onClick="nsChat.hideKeyboard" />
+
+    <View class="textFieldWrap">
+
+      <!-- sendMessage: Send new message by tapping the keyboard return button -->
+      <TextField id="input" onReturn="nsChat.sendMessage" />
+
+    </View>
+  </View>
+</Alloy>

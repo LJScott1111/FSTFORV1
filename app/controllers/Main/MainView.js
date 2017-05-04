@@ -40,7 +40,7 @@ nsMainView.openMySchedule = function() {
 };
 
 nsMainView.openChat = function() {
-
+	Alloy.Globals.openWindow('Chat/Chat', {}, true);
 };
 
 nsMainView.openSponsors = function() {

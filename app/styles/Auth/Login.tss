@@ -33,8 +33,25 @@
 }
 
 '.prevNextButtonsGroup': {
-	
+
 	borderColor: '#fff',
 	borderRadius: '5dp',
 	borderWidth: '1dp'
+}
+
+'TextField': {
+	height: '40dp',
+	left: '12dp',
+	right: '12dp',
+	hintTextColor: '#C0C0C0',
+	// borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+	backgroundColor: 'transparent',
+	borderStyle: Titanium.UI.INPUT_BORDERSTYLE_NONE,
+	autocapitalization: false,
+	borderRadius: '5dp',
+	borderColor: '#fff',
+	paddingLeft: '5dp',
+	paddingRight: '5dp',
+	autocorrect: false,
+	hiddenBehavior: Titanium.UI.HIDDEN_BEHAVIOR_GONE
 }
