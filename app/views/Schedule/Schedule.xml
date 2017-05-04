@@ -1,5 +1,5 @@
 <Alloy>
-	<View id="vwMainList" class="layout-fill padding-top-zero">
+	<View id="vwMainList" backgroundColor="#fff" class="layout-fill padding-top-zero">
 		<View class="options-parent-view padding-top-zero">
 			<View id="thursdayView" class="padding-left-zero padding-top-zero options">
 				<Label id="thursday" class="" text="L('thursday')"></Label>
@@ -11,7 +11,7 @@
 			</View>
 		</View>
 		<View id="showList">
-			<ListView id="scheduleListView" bottom="50dp" defaultItemTemplate="scheduleListTemplate">
+			<ListView id="scheduleListView" bottom="20dp" height="Titanium.UI.FILL" defaultItemTemplate="scheduleListTemplate">
 				<Templates>
 					<ItemTemplate name="scheduleListTemplate">
 						<View class="vertical-layout height-size-width-fill padding-top padding-bottom">
