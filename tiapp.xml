@@ -62,7 +62,9 @@
     <modules>
         <module platform="android">ti.cloudpush</module>
         <module platform="iphone">com.urbanairship</module>
+        <module platform="iphone">co.realtime.ortc</module>
         <module platform="android">com.urbanairship</module>
+        <module platform="android">co.realtime.ortc</module>
     </modules>
     <deployment-targets>
         <target device="android">true</target>
@@ -70,7 +72,7 @@
         <target device="iphone">true</target>
         <target device="mobileweb">false</target>
     </deployment-targets>
-    <sdk-version>6.0.4.GA</sdk-version>
+    <sdk-version>6.0.3.GA</sdk-version>
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
     </plugins>

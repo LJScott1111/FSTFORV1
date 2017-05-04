@@ -1,0 +1,61 @@
+
+"#chatWindow": {
+
+  // FIXME: https://jira.appcelerator.org/browse/TIMOB-19209
+  // This seems to make the issue with 4.1.0 happen less often
+  top: 0,
+  height: Ti.UI.FILL,
+  // We set the window to the backgroundColor we want for the wrapper of the TextField.
+  // This way it will also show this under that wrapper while the keyboard comes in and
+  // the container resizes to move the TextField up.
+  backgroundColor: '#3CC6D9',
+}
+
+"TextArea": {
+  top: '0dp',
+  bottom: '70dp',
+  width: Ti.UI.FILL,
+  height: Ti.UI.FILL,
+  borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+  borderWidth: 1,
+  borderColor: '#494949',
+  backgroundColor: '#3CC6D9',
+  color: '#B90204',
+  font: {
+    fontSize: '14dp'
+  }
+}
+
+"#chat": {
+  editable: false,
+}
+
+"#input": {
+  editable: true
+}
+
+// Styles for the TextField and its wrapper
+
+".textFieldWrap": {
+  height: '50dp',
+  bottom: '20dp',
+}
+
+"TextField": {
+  top: '8dp',
+  right: '5dp',
+  bottom: '8dp',
+  left: '5dp',
+
+  hintText: "Reply",
+  paddingLeft: '5dp',
+  paddingRight: '5dp',
+  borderRadius: '5dp',
+  backgroundColor: "white",
+
+  // The alert-style keyboards looks nice with our wrapper
+  appearance: Ti.UI.KEYBOARD_APPEARANCE_ALERT,
+
+  // Change the name of the return key on the keyboard
+  returnKeyType: Ti.UI.RETURNKEY_SEND
+}
