@@ -49,7 +49,7 @@ if (OS_ANDROID) {
 Alloy.Globals.globalValues = {
 
 	colors : {
-		theme : '#304158',
+		theme : '#27b5d4',
 		button : '#F3702B',
 		red : '#cc0000',
 		gray : '#898989'

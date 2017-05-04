@@ -226,11 +226,20 @@ $.done.addEventListener('click', function() {
 		console.log('this.success called ', user);
 		Titanium.App.Properties.setString('userid', user._id);
 
-		// TODO: download all the required data
+		utils.downloadAppdata(function(error) {
+			Alloy.Globals.error(L('err_dataDownloadFailed'), {
+				zIndex : 999,
+				persistent : false,
+				view : $.container
+			});
+		}, function(success) {
 
-		var activeUser = Kinvey.User.getActiveUser();
-		Titanium.App.Properties.removeProperty('defaultUser', false);
-		$.win.close();
+			// TODO: Ask for required permissions
+
+			var activeUser = Kinvey.User.getActiveUser();
+			Titanium.App.Properties.removeProperty('defaultUser', false);
+			$.win.close();
+		});
 	};
 
 	this.error = function(error) {
