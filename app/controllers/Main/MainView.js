@@ -27,7 +27,7 @@ nsMainView.postlayoutCall = function() {
 
 			}, function() {
 				// Do nothing
-				
+
 			});
 		}
 	});
@@ -45,6 +45,7 @@ nsMainView.openSpeaker = function() {
 
 nsMainView.openSchedule = function() {
 
+	Alloy.Globals.openWindow('Schedule/Schedule', {}, true);
 };
 
 nsMainView.openMySchedule = function() {

@@ -234,6 +234,12 @@
 	}
 }
 
+'.font-11': {
+	font: {
+		fontSize: '11dp'
+	}
+}
+
 '.font-13': {
 	font: {
 		fontSize: '13dp'

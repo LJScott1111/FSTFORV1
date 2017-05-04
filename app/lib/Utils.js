@@ -33,6 +33,13 @@ utils.sortArray = function(prop) {
 	};
 };
 
+utils.getDay = function(timestamp) {
+
+	var momentjs = require("alloy/moment");
+	var dateObj = momentjs(timestamp * 1000);
+	return dateObj.format('dddd');
+};
+
 utils.downloadAppdata = function(fail, callback) {
 
 	Alloy.Globals.loading.show();
@@ -40,11 +47,11 @@ utils.downloadAppdata = function(fail, callback) {
 
 		// Sort speakers based on the last name
 		var speakersArr = JSON.parse(JSON.stringify(speakersData));
-		for(var i in speakersArr){
+		for (var i in speakersArr) {
 			var nameStrings = speakersArr[i].name.split(" ");
 			speakersArr[i].lastname = nameStrings[1];
 		}
-		
+
 		// Save the data in local
 		var appdata = Titanium.App.Properties.getObject('appdata');
 		appdata.speakers = JSON.parse(JSON.stringify(speakersArr));

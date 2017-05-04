@@ -1,0 +1,25 @@
+
+".options-parent-view": {
+	height: '50dp',
+	width: Titanium.UI.FILL
+}
+
+".options": {
+	height: '50dp',
+	width: '50%'
+}
+
+".selected": {
+	height: '5dp',
+	bottom: 0,
+	zIndex: 99
+}
+
+'.font-color':{
+	color: '#566ba8'
+}
+
+"#showList": {
+	top: '50dp',
+	bottom: 0
+}

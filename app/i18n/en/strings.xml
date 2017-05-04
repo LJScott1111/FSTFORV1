@@ -32,8 +32,11 @@
 	<string name="instagram">Instagram</string>
 	<string name="facebook">Facebook</string>
 	<string name="welcomeText">Welcome to Fest Forums\nNYC 2017</string>
-	<string name=""></string>
 	
+	<string name="thursday">Thursday</string>
+	<string name="friday">Friday</string>
+	<string name="readMore">Read More</string>
+	<string name="addToSchedule">add to\nmy schedule</string>
 	
 	
 	<string name="err_generic">Some error occured. Please try again some time.</string>
