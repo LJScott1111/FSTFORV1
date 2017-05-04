@@ -21,6 +21,16 @@ nsSponsorView.openSponsorLink = function() {
 
 nsSponsorView.init = function() {
 
+	if (!Titanium.App.Properties.getBool('firstLoadDone')) {
+
+		setTimeout(function() {
+			$.sponsorImage.addEventListener('postlayout', nsSponsorView.setDimensions);
+			Titanium.App.Properties.setBool('firstLoadDone', true);
+		}, 50);
+	} else {
+		$.sponsorImage.addEventListener('postlayout', nsSponsorView.setDimensions);
+	}
+
 	console.log('args !!! ', $.args);
 	$.sponsorImage.image = $.args.sponsor.image;
 	if ($.args.height) {
@@ -32,6 +42,5 @@ nsSponsorView.init = function() {
 		$.sponsorView.remove($.sponsorsType);
 	}
 
-	$.sponsorImage.addEventListener('postlayout', nsSponsorView.setDimensions);
 	$.sponsorImage.addEventListener('click', nsSponsorView.openSponsorLink);
 }();
