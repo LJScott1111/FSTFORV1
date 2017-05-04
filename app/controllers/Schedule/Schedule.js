@@ -10,8 +10,7 @@ var firstload = true;
 function toggleStar(e) {
 
 	var item = e.section.getItemAt(e.itemIndex);
-	console.log('item ', item);
-	console.log('e.source.id ', e.source.id);
+	// console.log('item ', item);
 	if (item.properties.addedToSchedule) {
 		//delete from userschedule
 		api.deleteUserSchedule(item.properties.schedule, function() {
@@ -79,7 +78,7 @@ nsSchedule.filterSchedule = function() {
 	for (var i in fullSchedule) {
 
 		var day = utils.getDay(fullSchedule[i].start_time);
-		console.log('day ', day);
+		// console.log('day ', day);
 		if (day.toLowerCase() == 'thursday') {
 			thusdaySchedule.push(fullSchedule[i]);
 		} else {
@@ -87,8 +86,8 @@ nsSchedule.filterSchedule = function() {
 		}
 	}
 
-	console.log('thusdaySchedule ', JSON.stringify(thusdaySchedule));
-	console.log('fridaySchedule ', JSON.stringify(fridaySchedule));
+	// console.log('thusdaySchedule ', JSON.stringify(thusdaySchedule));
+	// console.log('fridaySchedule ', JSON.stringify(fridaySchedule));
 
 	if (firstload) {
 		nsSchedule.showSchedule(thusdaySchedule);
@@ -113,7 +112,7 @@ $.fridayView.addEventListener('click', function() {
 });
 
 nsSchedule.init = function() {
-	
+
 	thusdaySchedule = [];
 	fridaySchedule = [];
 
