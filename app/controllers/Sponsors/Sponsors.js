@@ -5,7 +5,6 @@ nsSponsors.displaySponsors = function() {
 
 	var sponsors = Titanium.App.Properties.getObject('appdata').sponsors;
 	sponsors.sort(utils.sortArray('Tier'));
-	console.log('sponsors!!! ', JSON.stringify(sponsors));
 
 	var object = [];
 	var result = [];
@@ -19,7 +18,6 @@ nsSponsors.displaySponsors = function() {
 
 			object.push(sponsors[i]);
 			if (i == sponsors.length - 1) {
-				console.log('LAST!!');
 				result.push(object);
 				object = [];
 			};
@@ -48,7 +46,6 @@ nsSponsors.displaySponsors = function() {
 	}];
 
 	for (var i in finalSponsorsArray) {
-		console.log('Here!!! ');
 
 		var label = finalSponsorsArray[i].label;
 

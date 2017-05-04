@@ -10,7 +10,7 @@ $.speakersListView.addEventListener('itemclick', function(e) {
 nsSpeakersList.displaySpeakers = function() {
 
 	var speakers = Titanium.App.Properties.getObject('appdata').speakers;
-	speakers.sort(utils.sortArray('lastname'));
+	speakers.sort(utils.sortArray('last_name'));
 
 	var sectionArr = [];
 	var index = [];
@@ -23,7 +23,7 @@ nsSpeakersList.displaySpeakers = function() {
 
 		if (speakers[i] !== undefined) {
 
-			l = speakers[i].lastname.substr(0, 1);
+			l = speakers[i].last_name.substr(0, 1);
 			if (lastL != l) {
 				list = [];
 
@@ -57,7 +57,7 @@ nsSpeakersList.displaySpeakers = function() {
 					image : speakers[i].image
 				},
 				name : {
-					text : speakers[i].name
+					text : speakers[i].name + ' ' + speakers[i].last_name
 				},
 				properties : {
 					data : speakers[i],

@@ -77,11 +77,6 @@
 	layout: 'absolute'
 }
 
-'.hight-fill-width-size': {
-	height: Titanium.UI.FILL,
-	width: Titanium.UI.SIZE
-}
-
 '.height-size-width-fill': {
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.FILL
@@ -100,14 +95,6 @@
 '.header': {
 	height: '50dp',
 	width: Titanium.UI.FILL
-}
-
-/**
-* 	PLACEHOLDER/IMAGES
-*/
-
-'.logo': {
-	image: 'graphics/logo.png'
 }
 
 /**
@@ -190,26 +177,6 @@
 
 '.color-white': {
 	color: '#fff'
-}
-
-'.color-gray': {
-	color: '#898989'
-}
-
-'.color-red':{
-	color: '#cc0000'
-}
-
-'.color-yellow': {
-	color: '#fcca6d'
-}
-
-'.bgcolor-gray': {
-	backgroundColor: '#898989'
-}
-
-'.bgcolor-green': {
-	backgroundColor: '#4caf50'
 }
 
 '.scrollview-normal': {

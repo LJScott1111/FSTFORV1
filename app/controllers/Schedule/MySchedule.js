@@ -16,7 +16,6 @@ function toggleStar(e) {
 		item.star.text = '\uf006';
 		e.section.deleteItemsAt(e.itemIndex, 1);
 	});
-
 };
 
 function openScheduleLink(e) {
