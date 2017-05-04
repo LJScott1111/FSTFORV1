@@ -41,6 +41,9 @@ nsSpeakers.openMySchedule = function() {
 
 	$.scheduleIcon.applyProperties(nsSpeakers.propGrey);
 	$.scheduleText.applyProperties(nsSpeakers.propGrey);
+
+	var mySchedule = Alloy.createController('Schedule/MySchedule').getView();
+	$.mainContent.add(mySchedule);
 };
 
 nsSpeakers.openSchedule = function() {
@@ -54,7 +57,7 @@ nsSpeakers.openSchedule = function() {
 
 	$.scheduleIcon.applyProperties(nsSpeakers.propRed);
 	$.scheduleText.applyProperties(nsSpeakers.propRed);
-	
+
 	var schedule = Alloy.createController('Schedule/Schedule').getView();
 	$.mainContent.add(schedule);
 };

@@ -299,6 +299,9 @@ nsLogin.resetPageState = function() {
 nsLogin.init = function() {
 
 	Titanium.App.Properties.setObject('appdata', Alloy.Globals.appData);
+	if (!Titanium.App.Properties.getObject('userSchedule')) {
+		Titanium.App.Properties.setObject('userSchedule', []);
+	}
 	if (OS_ANDROID) {
 		setInterval(function() {
 			$.launchVideo.play();

@@ -2,7 +2,7 @@
 	<View id="vwMainList" backgroundColor="#fff" class="layout-fill padding-top-zero">
 		<View class="options-parent-view padding-top-zero">
 			<View id="thursdayView" class="padding-left-zero padding-top-zero options">
-				<Label id="thursday" class="" text="L('thursday')"></Label>
+				<Label id="thursday" text="L('thursday')"></Label>
 				<View id="thursdaySelected" class="theme-bgcolor selected"></View>
 			</View>
 			<View id="fridayView" class="padding-right-zero padding-top-zero options">

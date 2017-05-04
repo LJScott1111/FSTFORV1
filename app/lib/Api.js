@@ -148,16 +148,57 @@ api.getSchedule = function(success, fail) {
 };
 
 // Get user schedule
-api.getUserSchedule = function(args, success, fail) {
+api.getUserSchedule = function(success) {
 	// Local DB
+	success(Ti.App.Properties.getObject('userSchedule', []));
 };
 
-api.saveUserSchedule = function(args, success, fail) {
+api.saveUserSchedule = function(args, success) {
 	// Local DB
+	console.error('Ti.App.Properties.getObject( -- ', Ti.App.Properties.getObject('userSchedule'));
+	var userSchedule = Ti.App.Properties.getObject('userSchedule', []);
+	console.log('userSchedule( -- ', userSchedule);
+
+	if (userSchedule.length != 0) {
+
+		for (var i in userSchedule) {
+
+			if (userSchedule[i]._id == args._id) {
+
+				alert('You already added this show.');
+				// TODO - show error
+				return;
+			}
+		}
+	}
+
+	userSchedule.push(args);
+
+	Ti.App.Properties.setObject('userSchedule', userSchedule);
+	console.log('userSchedule( -- ', userSchedule);
+	success();// Show success message TODO
 };
 
-api.deleteUserSchedule = function(args, success, fail) {
+api.deleteUserSchedule = function(args, success) {
 	// Local DB
+	
+	var userSchedule = Ti.App.Properties.getObject('userSchedule', []);
+
+	if (userSchedule.length != 0) {
+
+		for (var i in userSchedule) {
+
+			if (userSchedule[i]._id == args._id) {
+
+				userSchedule.splice(i, 1);
+				console.log('ENTRY DELETED');
+				break;
+			}
+		}
+	}
+
+	Ti.App.Properties.setObject('userSchedule', userSchedule);
+	success();// Show success message TODO
 };
 
 module.exports = api;

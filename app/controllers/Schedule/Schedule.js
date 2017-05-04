@@ -1,5 +1,6 @@
 var nsSchedule = {};
 var utils = Alloy.Globals.UTILS;
+var api = Alloy.Globals.API;
 var fullSchedule;
 var momentjs = require("alloy/moment");
 var thusdaySchedule = [];
@@ -11,9 +12,15 @@ function toggleStar(e) {
 	console.log('item ', item);
 	console.log('e.source.id ', e.source.id);
 	if (item.properties.addedToSchedule) {
-		item.star.text = '\uf006';
+		//delete from userschedule
+		api.deleteUserSchedule(item.properties.schedule, function() {
+			item.star.text = '\uf006';
+		});
 	} else {
-		item.star.text = '\uf005';
+		// add into userschedule
+		api.saveUserSchedule(item.properties.schedule, function() {
+			item.star.text = '\uf005';
+		});
 	}
 
 	item.properties.addedToSchedule = !item.properties.addedToSchedule;
@@ -25,7 +32,7 @@ function openScheduleLink(e) {
 	var item = e.section.getItemAt(e.itemIndex);
 
 	Alloy.Globals.openWindow("Misc/WebLinkView", {
-		url : item.properties.url,
+		url : item.properties.url
 	}, true);
 };
 
@@ -38,11 +45,11 @@ nsSchedule.showSchedule = function(schedule) {
 		var start = new Date(schedule[i].start_time * 1000);
 		var startDate = momentjs(start).format('dddd, MMM Do');
 		var startTime = momentjs(start).format('hh:mm');
-		console.log('date ', startDate, startTime);
+		// console.log('date ', startDate, startTime);
 
 		var end = new Date(schedule[i].end_time * 1000);
 		var endTime = momentjs(end).format('hh:mm a');
-		console.log('end date ', schedule[i].end_time, end, endTime);
+		// console.log('end date ', schedule[i].end_time, end, endTime);
 
 		scheduleList.push({
 			session : {
@@ -52,12 +59,13 @@ nsSchedule.showSchedule = function(schedule) {
 				text : startTime + ' - ' + endTime
 			},
 			star : {
-				text : '\uf006'
+				text : (schedule[i].addedToSchedule) ? '\uf005' : '\uf006'
 			},
 			properties : {
 				url : schedule[i].redirect_link,
 				height : Titanium.UI.SIZE,
-				addedToSchedule : false
+				addedToSchedule : schedule[i].addedToSchedule || false,
+				schedule : schedule[i]
 			}
 		});
 	}
@@ -66,9 +74,6 @@ nsSchedule.showSchedule = function(schedule) {
 };
 
 nsSchedule.filterSchedule = function() {
-
-	fullSchedule = Titanium.App.Properties.getObject('appdata').schedule;
-	fullSchedule.sort(utils.sortArray('start_time'));
 
 	for (var i in fullSchedule) {
 
@@ -102,6 +107,23 @@ $.fridayView.addEventListener('click', function() {
 });
 
 nsSchedule.init = function() {
+
+	fullSchedule = Titanium.App.Properties.getObject('appdata').schedule;
+	fullSchedule.sort(utils.sortArray('start_time'));
+
+	// addedToSchedule schedule status TODO
+	var userSchedule = Titanium.App.Properties.getObject('userSchedule');
+	userSchedule.sort(utils.sortArray('start_time'));
+
+	for (var i in userSchedule) {
+
+		for (var j in fullSchedule) {
+			if (userSchedule[i]._id == fullSchedule[j]._id) {
+				fullSchedule[j].addedToSchedule = true;
+				break;
+			};
+		}
+	}
 
 	// Filter Schedule
 	nsSchedule.filterSchedule();

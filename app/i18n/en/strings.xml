@@ -37,6 +37,7 @@
 	<string name="friday">Friday</string>
 	<string name="readMore">Read More</string>
 	<string name="addToSchedule">add to\nmy schedule</string>
+	<string name="removeFromSchedule">Remove from\nmy schedule</string>
 	
 	
 	<string name="err_generic">Some error occured. Please try again some time.</string>
