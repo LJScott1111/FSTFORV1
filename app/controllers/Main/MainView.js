@@ -50,6 +50,7 @@ nsMainView.openSchedule = function() {
 
 nsMainView.openMySchedule = function() {
 
+	Alloy.Globals.openWindow('Schedule/MySchedule', {}, true);
 };
 
 nsMainView.openChat = function() {
