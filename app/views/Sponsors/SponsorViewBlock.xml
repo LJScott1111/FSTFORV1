@@ -1,5 +1,6 @@
 <Alloy>
-	<View class="layout-size vertical-layout">
+	<View id="sponsorView" class="layout-size vertical-layout">
+		<Label id="sponsorsType" class="font-18 padding-top font-bold"></Label>
 		<ImageView id="sponsorImage" class="padding-top" height="60dp"></ImageView>
 	</View>
 </Alloy>
