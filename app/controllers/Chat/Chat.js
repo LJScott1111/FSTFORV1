@@ -66,7 +66,7 @@ nsChat.onKeyboardframechanged = function(e) {
 
 
 nsChat.hideKeyboard = function(e) {
-    $.textField.blur();
+    $.input.blur();
 }
 
 nsChat.connectToChannel = function() {
@@ -99,11 +99,22 @@ nsChat.addRowToMessages = function(msg) {
     $.chat.value += time + ": " + msg + "\n";
 }
 
+nsChat.cleanup = function() {
+    // let Alloy clean up listeners to global collections for data-binding
+    // always call it since it'll just be empty if there are none
+    $.destroy();
+
+    // disconnect
+    ortc.disconnect();
+}
+
 nsChat.init = function() {
 
     nsChat.connectToChannel();
 
      // Resize the container when the keyboards shows/hides
     Ti.App.addEventListener('keyboardframechanged', nsChat.onKeyboardframechanged);
+
+    $.chatWindow.addEventListener('destroy', nsChat.cleanup);
 
 }();
