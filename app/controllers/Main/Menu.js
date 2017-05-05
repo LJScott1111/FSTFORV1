@@ -87,8 +87,49 @@ $.privacyPolicy.button.addEventListener('click', function() {
 	}, true);
 });
 
-/*
- $.logout.button.addEventListener('click', function() {
+$.logout.button.addEventListener('click', function() {
 
- Ti.App.fireEvent('toggleMenu');
- });*/
+	Ti.App.fireEvent('toggleMenu');
+	var api = Alloy.Globals.API;
+	api.logout(function(success) {
+		Alloy.createController('Auth/Login', {
+			callback : function() {
+				$.loginView.height = Titanium.UI.SIZE;
+				$.logoutView.height = 0;
+			}
+		}).getView().open();
+	}, function(error) {
+		var message = (error.message) ? error.message : L('err_generic');
+		console.log('err.Message ', error.message);
+		Alloy.Globals.error(message, {
+			zIndex : 999,
+			persistent : false,
+		});
+	});
+});
+
+$.login.button.addEventListener('click', function() {
+
+	Ti.App.fireEvent('toggleMenu');
+	Alloy.createController('Auth/Login', {
+		callback : function() {
+			$.loginView.height = 0;
+			$.logoutView.height = Titanium.UI.SIZE;
+		}
+	}).getView().open();
+});
+
+nsMenu.init = function() {
+
+	if (Titanium.App.Properties.getString('defaultUser') == true) {
+		$.loginView.height = Titanium.UI.SIZE;
+		$.logoutView.height = 0;
+	} else {
+		$.loginView.height = 0;
+		$.logoutView.height = Titanium.UI.SIZE;
+	}
+};
+
+Titanium.App.addEventListener('onLogin', nsMenu.init);
+
+nsMenu.init();

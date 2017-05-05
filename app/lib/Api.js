@@ -69,7 +69,7 @@ api.logout = function(success, fail) {
 			Titanium.App.Properties.removeProperty('userid');
 			Titanium.App.Properties.removeProperty('name');
 			console.debug("Titanium.App.Properties.removeProperty('userid') ", Titanium.App.Properties.getString('userid'));
-			Titanium.App.Properties.removeProperty('defaultUser', false);
+			Titanium.App.Properties.removeProperty('defaultUser');
 			success();
 		}, function(error) {
 			console.debug("Logout Error");

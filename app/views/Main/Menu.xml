@@ -15,7 +15,14 @@
 			<Require id="inTheMedia" src="Misc/MenuButton" title="L('inTheMedia').toUpperCase()" />
 			<Require id="contact" src="Misc/MenuButton" title="L('contact').toUpperCase()" />
 			<Require id="privacyPolicy" src="Misc/MenuButton" title="L('privacyPolicy').toUpperCase()" />
-			<!-- <Require id="logout" src="Misc/MenuButton" title="L('logout').toUpperCase()" /> -->
+			<View id="logoutView" class="layout-size">
+				<Require id="logout" src="Misc/MenuButton" title="L('logout').toUpperCase()" />
+			</View>
+			
+			<View id="loginView" class="layout-size">
+				<Require id="login" src="Misc/MenuButton" title="L('login').toUpperCase()" />
+			</View>
+			
 
 		</ScrollView>
 	</View>

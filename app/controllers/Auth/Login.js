@@ -78,6 +78,7 @@ nsLogin.performLogin = function() {
 			Titanium.App.Properties.setString('userid', user.data._id);
 			Titanium.App.Properties.setString('name', user.data.name);
 			console.log(Titanium.App.Properties.getString('name'));
+			Titanium.App.fireEvent('onLogin');
 			$.win.close();
 		});
 	};
@@ -160,6 +161,7 @@ $.continueAsGuest.addEventListener('click', function() {
 
 		console.debug("Active User - activeUser: ", JSON.stringify(activeUser));
 		console.log(Titanium.App.Properties.getString('name'));
+		Titanium.App.fireEvent('onLogin');
 
 		// TODO: download all the required data
 		console.log('Downloading all the required data...');
@@ -195,10 +197,10 @@ $.continueAsGuest.addEventListener('click', function() {
 			if (activeUser !== null) {
 				promise = activeUser.me();
 			}
-
 			console.debug("Active User - activeUser: ", JSON.stringify(activeUser));
 
 			Titanium.App.Properties.setString('defaultUser', true);
+			Titanium.App.fireEvent('onLogin');
 
 			console.log('Downloading all the required data...');
 			utils.downloadAppdata(function(error) {
