@@ -11,6 +11,7 @@ var api = {};
 api.signup = function(args, success, fail) {
 
 	var promise = Kinvey.User.signup({
+		name: args.name,
 		username : args.username,
 		password : args.password,
 		application : 'festforum'

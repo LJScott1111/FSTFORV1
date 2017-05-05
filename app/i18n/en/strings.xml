@@ -5,6 +5,7 @@
 	<string name="continueAsGuest">Continue as a Guest</string>
 	<string name="login">LOGIN</string>
 	<string name="signup">SIGNUP</string>
+	<string name="name">Username</string>
 	<string name="email_address">Email address</string>
 	<string name="password">Password</string>
 	<string name="confirm_password">Confirm Password</string>
@@ -44,4 +45,5 @@
 	<string name="err_invalidEmail">Please enter a valid email address.</string>
 	<string name="err_password">Password should be minimum of 5 character long.</string>
 	<string name="err_confirmPassword">Passwords do not match.</string>
+	<string name="err_correctName">The name should be 5-30 characters and can contain only alphanumeric characters.</string>
 </resources>

@@ -16,6 +16,7 @@
 					<Label id="back" class="fontawesome font-16 padding-left color-white" text="\uf060"></Label>
 				</View>
 				<ScrollView class="scrollview-normal layout-fill">
+					<TextField id="name" class="color-white hidden" top="40%" hintText="L('name')"></TextField>
 					<TextField id="email" class="color-white keyboard-type-email" top="40%" hintText="L('email_address')"></TextField>
 					<TextField id="password" class="color-white hidden" top="40%" passwordMask="true" hintText="L('password')"></TextField>
 					<TextField id="confirmPassword" class="color-white hidden" top="40%" passwordMask="true" hintText="L('confirm_password')"></TextField>

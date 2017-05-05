@@ -14,6 +14,11 @@ utils.validateZeroLength = function(string) {
 	return (string.trim().length != 0);
 };
 
+utils.validateName = function(nameValue) {
+	var nameRagex = /^[a-zA-Z ]{5,30}$/;
+	return nameRagex.test(nameValue);
+};
+
 utils.getDateFormatted = function(date) {
 	var momentjs = require("alloy/moment");
 	var dateString = "";
