@@ -45,6 +45,23 @@ utils.getDay = function(timestamp) {
 	return dateObj.format('dddd');
 };
 
+utils.getRandomBanner = function() {
+
+	if (Alloy.Globals.banners.length == 0) {
+		Alloy.Globals.banners = JSON.parse(JSON.stringify(Titanium.App.Properties.getObject('appdata').banners));
+	};
+
+	// get a random array element from
+	var random = Math.floor(Math.random() * Alloy.Globals.banners.length);
+
+	var randomObj = Alloy.Globals.banners[random];
+	Alloy.Globals.randomObj = randomObj;
+	// console.log('RANDOM ELEMENT ', randomObj);
+
+	Alloy.Globals.banners.splice(random, 1);
+	return randomObj;
+};
+
 utils.downloadAppdata = function(fail, callback) {
 
 	Alloy.Globals.loading.show();
@@ -64,13 +81,24 @@ utils.downloadAppdata = function(fail, callback) {
 
 				Alloy.Globals.API.getSchedule(function(scheduleData) {
 
-					Alloy.Globals.loading.hide();
 					appdata.schedule = JSON.parse(JSON.stringify(scheduleData));
-					Titanium.App.Properties.setObject('appdata', appdata);
 
-					if (callback) {
-						callback();
-					};
+					Alloy.Globals.API.getBanners(function(bannersData) {
+
+						Alloy.Globals.loading.hide();
+						appdata.banners = JSON.parse(JSON.stringify(bannersData));
+						Titanium.App.Properties.setObject('appdata', appdata);
+
+						if (callback) {
+							callback();
+						};
+					}, function(error) {
+						Alloy.Globals.loading.hide();
+						if (fail) {
+							fail();
+						};
+					});
+
 				}, function(error) {
 					Alloy.Globals.loading.hide();
 					if (fail) {

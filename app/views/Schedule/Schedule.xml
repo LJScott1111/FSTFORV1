@@ -11,7 +11,7 @@
 			</View>
 		</View>
 		<View id="showList">
-			<ListView id="scheduleListView" bottom="20dp" height="Titanium.UI.FILL" defaultItemTemplate="scheduleListTemplate">
+			<ListView id="scheduleListView" bottom="80dp" height="Titanium.UI.FILL" defaultItemTemplate="scheduleListTemplate">
 				<Templates>
 					<ItemTemplate name="scheduleListTemplate">
 						<View class="vertical-layout height-size-width-fill padding-top padding-bottom">
@@ -35,5 +35,6 @@
 				<ListSection/>
 			</ListView>
 		</View>
+		<Require id="banner" src="Misc/BannerView" />
 	</View>
 </Alloy>

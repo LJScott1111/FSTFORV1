@@ -4,35 +4,42 @@ var deviceWidth = Ti.Platform.displayCaps.platformWidth;
 var blockWidth = deviceWidth * 0.485;
 var utils = Alloy.Globals.UTILS;
 
+nsMainView.setBanner = function() {
+
+	var banner = Alloy.createController('Misc/BannerView').getView();
+	$.vwMain.add(banner);
+};
+
 nsMainView.postlayoutCall = function() {
-	// console.log('CHECK USER = ', Titanium.App.Properties.getString('defaultUser'));
-	// if (Titanium.App.Properties.getString('defaultUser') == true) {
 
 	Alloy.Globals.checkUser(function(user) {
+
 		if (!user || user == null) {
 			Alloy.createController('Auth/Login', {
 				callback : function() {
 					console.log('CALLBACK!');
+					nsMainView.setBanner();
 				}
 			}).getView().open();
 		} else {
+
 			console.log('USER ', user);
 			// Downlaod required data
 			utils.downloadAppdata(function(error) {
 				Alloy.createController('Auth/Login', {
 					callback : function() {
 						console.log('CALLBACK!');
+						nsMainView.setBanner();
 					}
 				}).getView().open();
 
 			}, function() {
 				// Do nothing
+				// nsMainView.setBanner();
 
 			});
 		}
 	});
-
-	// }
 
 	$.vwMain.removeEventListener('postlayout', nsMainView.postlayoutCall);
 	return;

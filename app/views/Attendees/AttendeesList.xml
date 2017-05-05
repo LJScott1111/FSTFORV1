@@ -1,6 +1,6 @@
 <Alloy>
-	<View id="vwAttendeesList" class="vertical-layout layout-fill padding-top-zero">
-		<ListView id="attendeesListView" backgroundColor="#000" bottom="30dp" defaultItemTemplate="attendeesListTemplate">
+	<View id="vwAttendeesList" class="layout-fill padding-top-zero">
+		<ListView id="attendeesListView" backgroundColor="#000" class="padding-top-zero" bottom="80dp" defaultItemTemplate="attendeesListTemplate">
 			<Templates>
 				<ItemTemplate name="attendeesListTemplate">
 					<View class="vertical-layout height-size-width-fill">
@@ -11,5 +11,6 @@
 			</Templates>
 			<ListSection/>
 		</ListView>
+		<Require id="banner" src="Misc/BannerView" />
 	</View>
 </Alloy>

@@ -80,6 +80,7 @@ nsLogin.performLogin = function() {
 			console.log(Titanium.App.Properties.getString('name'));
 			Titanium.App.fireEvent('onLogin');
 			$.win.close();
+			$.args.callback();
 		});
 	};
 
@@ -176,6 +177,7 @@ $.continueAsGuest.addEventListener('click', function() {
 			// TODO: Ask for required permissions
 
 			$.win.close();
+			$.args.callback();
 		});
 
 	} else {
@@ -213,6 +215,7 @@ $.continueAsGuest.addEventListener('click', function() {
 				// TODO: Ask for required permissions
 
 				$.win.close();
+				$.args.callback();
 			});
 
 		}, function(error) {

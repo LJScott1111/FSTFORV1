@@ -1,20 +1,23 @@
 <Alloy>
-	<View class="layout-fill vertical-layout" id="vwMain">
-		<View class="height-size-width-fill" backgroundColor="#1A1A1A">
+	<View class="layout-fill" id="vwMain">
+		<View class="vertical-layout layout-fill padding-top-zero" bottom="80dp">
+			<View class="height-size-width-fill" backgroundColor="#1A1A1A">
 
-			<View class="padding-left vertical-layout layout-size" id="twitterView">
-				<Label id="twitter" class="touch-false social-labels layout-size font-13" text="L('twitter').toUpperCase()"></Label>
-				<View id="twitterUnderline" class="underline"></View>
+				<View class="padding-left vertical-layout layout-size" id="twitterView">
+					<Label id="twitter" class="touch-false social-labels layout-size font-13" text="L('twitter').toUpperCase()"></Label>
+					<View id="twitterUnderline" class="underline"></View>
+				</View>
+				<View class="vertical-layout layout-size" id="fbView">
+					<Label id="fb" class="touch-false social-labels layout-size font-13" text="L('facebook').toUpperCase()"></Label>
+					<View id="fbUnderline" class="underline"></View>
+				</View>
+				<View class="padding-right vertical-layout layout-size" id="instaView">
+					<Label id="insta" class="touch-false social-labels layout-size font-13" text="L('instagram').toUpperCase()"></Label>
+					<View id="instaUnderline" class="underline"></View>
+				</View>
 			</View>
-			<View class="vertical-layout layout-size" id="fbView">
-				<Label id="fb" class="touch-false social-labels layout-size font-13" text="L('facebook').toUpperCase()"></Label>
-				<View id="fbUnderline" class="underline"></View>
-			</View>
-			<View class="padding-right vertical-layout layout-size" id="instaView">
-				<Label id="insta" class="touch-false social-labels layout-size font-13" text="L('instagram').toUpperCase()"></Label>
-				<View id="instaUnderline" class="underline"></View>
-			</View>
+			<WebView id="wvWebView"></WebView>
 		</View>
-		<WebView id="wvWebView"></WebView>
+		<Require id="banner" src="Misc/BannerView" />
 	</View>
 </Alloy>

@@ -1,0 +1,5 @@
+<Alloy>
+	<View id="bannerView" class="padding-bottom-zero height-size-width-fill">
+		<ImageView id="bannerImage"></ImageView>
+	</View>
+</Alloy>

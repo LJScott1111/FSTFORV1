@@ -56,11 +56,14 @@ Alloy.Globals.globalValues = {
 	}
 };
 
+Alloy.Globals.banners = [];
+
 Alloy.Globals.appData = {
 	speakers : [],
 	sponsors : [],
 	attendees : [],
-	schedule: []
+	schedule : [],
+	banners : []
 };
 
 Alloy.Globals.loading = Alloy.createWidget('nl.fokkezb.loading');
