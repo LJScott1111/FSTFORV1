@@ -41,9 +41,10 @@
 	<string name="removeFromSchedule">Remove from\nmy schedule</string>
 	
 	
-	<string name="err_generic">Some error occured. Please try again some time.</string>
+	<string name="err_generic">Some error occured. Please try again after some time.</string>
 	<string name="err_invalidEmail">Please enter a valid email address.</string>
 	<string name="err_password">Password should be minimum of 5 character long.</string>
 	<string name="err_confirmPassword">Passwords do not match.</string>
 	<string name="err_correctName">The name should be 5-30 characters and can contain only alphanumeric characters.</string>
+	<string name="err_dataDownloadFailed">Required data failed to download. Please try again after some time.</string>
 </resources>

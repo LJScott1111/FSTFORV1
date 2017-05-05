@@ -59,20 +59,21 @@ api.login = function(args, success, fail) {
 	});
 };
 
-api.logout = function(args, success, fail) {
-	var user = Kinvey.getActiveUser();
+api.logout = function(success, fail) {
+	var user = Kinvey.User.getActiveUser();
 	if (null !== user) {
 		var promise = Kinvey.User.logout();
 		promise.then(function() {
 			console.debug("Logout Success");
-			Titanium.App.Properties.removeProperty('appdata');
+			Titanium.App.Properties.setObject('appdata', Alloy.Globals.appData);
 			Titanium.App.Properties.removeProperty('userid');
+			Titanium.App.Properties.removeProperty('name');
 			console.debug("Titanium.App.Properties.removeProperty('userid') ", Titanium.App.Properties.getString('userid'));
 			Titanium.App.Properties.removeProperty('defaultUser', false);
-			// onloadCallback();
+			success();
 		}, function(error) {
 			console.debug("Logout Error");
-			// errorCallback(error);
+			fail();
 		});
 	}
 };

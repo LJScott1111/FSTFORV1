@@ -53,6 +53,73 @@ nsLogin.confirmPasswordValidation = function() {
 	};
 };
 
+nsLogin.performLogin = function() {
+	this.success = function(user) {
+		console.log('this.success called ', user);
+		utils.downloadAppdata(function(error) {
+			Alloy.Globals.error(L('err_dataDownloadFailed'), {
+				zIndex : 999,
+				persistent : false,
+				view : $.container
+			});
+		}, function(success) {
+
+			// TODO: Ask for required permissions
+
+			var activeUser = Kinvey.User.getActiveUser();
+			var promise = Promise.resolve(activeUser);
+			if (activeUser !== null) {
+				promise = activeUser.me();
+			}
+
+			console.debug("ACTIVE USER - activeUser: ", JSON.stringify(activeUser));
+
+			Titanium.App.Properties.removeProperty('defaultUser', false);
+			Titanium.App.Properties.setString('userid', user.data._id);
+			Titanium.App.Properties.setString('name', user.data.name);
+			console.log(Titanium.App.Properties.getString('name'));
+			$.win.close();
+		});
+	};
+
+	this.error = function(error) {
+
+		var message = (error.message) ? error.message : L('err_generic');
+		console.log('err.Message ', error.message);
+		Alloy.Globals.error(message, {
+			zIndex : 999,
+			persistent : false,
+			view : $.container
+		});
+	};
+
+	var data = {
+		name : $.name.getValue().trim(),
+		username : $.email.getValue().trim(),
+		password : $.password.getValue().trim()
+	};
+
+	if (screen == 'signup') {
+
+		if (nsLogin.confirmPasswordValidation() == false) {
+			return;
+		};
+
+		$.confirmPassword.blur();
+
+		api.signup(data, this.success, this.error);
+	} else {
+
+		if (nsLogin.passwordValidation() == false) {
+			return;
+		};
+
+		$.password.blur();
+
+		api.login(data, this.success, this.error);
+	}
+};
+
 $.win.addEventListener('close', function() {
 	$.launchVideo = null;
 	$.win = null;
@@ -257,71 +324,24 @@ $.next.addEventListener('click', function() {
 
 $.done.addEventListener('click', function() {
 
-	// Check if a default user is already signed in - logout from it TODO
+	var Kinvey = Alloy.Globals.Kinvey;
+	var activeUser = Kinvey.User.getActiveUser();
+	if (activeUser) {
+		api.logout(function(success) {
 
-	this.success = function(user) {
-		console.log('this.success called ', user);
-		utils.downloadAppdata(function(error) {
-			Alloy.Globals.error(L('err_dataDownloadFailed'), {
+			nsLogin.performLogin();
+		}, function(error) {
+
+			var message = (error.message) ? error.message : L('err_generic');
+			console.log('err.Message ', error.message);
+			Alloy.Globals.error(message, {
 				zIndex : 999,
 				persistent : false,
 				view : $.container
 			});
-		}, function(success) {
-
-			// TODO: Ask for required permissions
-
-			var activeUser = Kinvey.User.getActiveUser();
-			var promise = Promise.resolve(activeUser);
-			if (activeUser !== null) {
-				promise = activeUser.me();
-			}
-
-			console.debug("ACTIVE USER - activeUser: ", JSON.stringify(activeUser));
-
-			Titanium.App.Properties.removeProperty('defaultUser', false);
-			Titanium.App.Properties.setString('userid', user.data._id);
-			Titanium.App.Properties.setString('name', user.data.name);
-			console.log(Titanium.App.Properties.getString('name'));
-			$.win.close();
 		});
-	};
-
-	this.error = function(error) {
-
-		var message = (error.message) ? error.message : L('err_generic');
-		console.log('err.Message ', error.message);
-		Alloy.Globals.error(message, {
-			zIndex : 999,
-			persistent : false,
-			view : $.container
-		});
-	};
-
-	var data = {
-		name : $.name.getValue(),
-		username : $.email.getValue(),
-		password : $.password.getValue()
-	};
-
-	if (screen == 'signup') {
-
-		if (nsLogin.confirmPasswordValidation() == false) {
-			return;
-		};
-
-		$.confirmPassword.blur();
-
-		api.signup(data, this.success, this.error);
 	} else {
-
-		if (nsLogin.passwordValidation() == false) {
-			return;
-		};
-
-		$.password.blur();
-
-		api.login(data, this.success, this.error);
+		nsLogin.performLogin();
 	}
 });
 
@@ -335,7 +355,8 @@ nsLogin.resetPageState = function() {
 	$.password.setValue("");
 	$.confirmPassword.setValue("");
 
-	$.email.visible = true;
+	$.name.visible = true;
+	$.email.visible = false;
 	$.password.visible = false;
 	$.confirmPassword.visible = false;
 	$.prev.visible = false;
