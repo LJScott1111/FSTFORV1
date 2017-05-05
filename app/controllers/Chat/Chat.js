@@ -81,7 +81,9 @@ nsChat.connectToChannel = function() {
 nsChat.sendMessage = function(e) {
 
     // $.chat.value += "me: " + $.input.value + "\n";
-    ortc.send(channelName, $.input.value);
+    console.log('User name :' + Titanium.App.Properties.getString('name'));
+    var chatMessage = Titanium.App.Properties.getString('name') + " :" + $.input.value;
+    ortc.send(channelName, chatMessage);
     $.input.value = "";
 
 }
@@ -96,7 +98,7 @@ nsChat.addRowToMessages = function(msg) {
     if(s<10) s = '0' + s;
     var time = h+':'+m+':'+s;
 
-    $.chat.value += time + ": " + msg + "\n";
+    $.chat.value += msg + " (" + time + ")" + "\n";
 }
 
 nsChat.cleanup = function() {
