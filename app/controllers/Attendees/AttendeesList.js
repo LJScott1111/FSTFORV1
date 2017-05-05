@@ -65,11 +65,10 @@ nsAttendeesList.displayAttendees = function() {
 					text : company
 				},
 				properties : {
-					// data : attendees[i],
-					// accessoryType : Titanium.UI.LIST_ACCESSORY_TYPE_DISCLOSURE,
 					backgroundColor : '#000',
 					height : Titanium.UI.SIZE,
-					title : attendees[i].name
+					title : attendees[i].name,
+					selectionStyle : (OS_IOS) ? Titanium.UI.iPhone.ListViewCellSelectionStyle.NONE : ''
 				}
 			});
 

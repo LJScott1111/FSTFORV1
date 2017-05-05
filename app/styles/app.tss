@@ -18,6 +18,11 @@
 	color: '#000'
 }
 
+'ListItem[platform=ios]':{
+	selectedColor: 'transparent',
+	selectedBackgroundColor: 'transparent'
+}
+
 'Button': {
 	height: '30dp',
 	width: '40%',

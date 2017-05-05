@@ -64,7 +64,8 @@ nsSpeakersList.displaySpeakers = function() {
 					accessoryType : Titanium.UI.LIST_ACCESSORY_TYPE_DISCLOSURE,
 					backgroundColor : '#000',
 					height : Titanium.UI.SIZE,
-					title : speakers[i].name
+					title : speakers[i].name,
+					selectionStyle : (OS_IOS) ? Titanium.UI.iPhone.ListViewCellSelectionStyle.NONE : ''
 				}
 			});
 
