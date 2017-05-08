@@ -26,6 +26,10 @@
         <use-app-thinning>true</use-app-thinning>
         <plist>
             <dict>
+                <key>UIBackgroundModes</key>
+                <array>
+                    <string>remote-notification</string>
+                </array>
                 <key>UISupportedInterfaceOrientations~iphone</key>
                 <array>
                     <string>UIInterfaceOrientationPortrait</string>
@@ -72,21 +76,30 @@
         <target device="iphone">true</target>
         <target device="mobileweb">false</target>
     </deployment-targets>
-    <sdk-version>6.0.3.GA</sdk-version>
+    <sdk-version>6.0.4.GA</sdk-version>
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
     </plugins>
     <!-- Urban Airship -->
     <!-- Production credentials -->
-    <property name="com.urbanairship.production_app_key" type="string">a2ZPxSddSte__CZVcCPVnQ</property>
-    <property name="com.urbanairship.production_app_secret" type="string">svIcqVW2QKGyzyArX-aerg</property>
+    <property name="com.urbanairship.production_app_key" type="string">m2zMxmnpREyTl29kO9NpFA</property>
+    <property name="com.urbanairship.production_app_secret" type="string">cZ1xQTOvQ3-Wxc0cesDTdA</property>
     <!-- Development credentials -->
-    <property name="com.urbanairship.development_app_key" type="string">WQdRCxouQXGLec8TYVJPfw</property>
-    <property name="com.urbanairship.development_app_secret" type="string">9SVsRprLRye0NXw06xEfNQ</property>
+    <!-- <property name="com.urbanairship.development_app_key" type="string"></property>
+    <property name="com.urbanairship.development_app_secret" type="string"></property>-->
     <!-- Selects between production vs development credentials -->
     <property name="com.urbanairship.in_production" type="bool">true</property>
     <!-- Android -->
-    <property name="com.urbanairship.gcm_sender" type="String">396923721876</property>
+    <property name="com.urbanairship.gcm_sender" type="String">309913142922</property>
     <property name="com.urbanairship.notification_icon" type="string">appicon.png</property>
     <property name="com.urbanairship.notification_accent_color" type="string">#ff0000</property>
+    <!-- iOS 10 alert foreground notification presentation option -->
+    <property
+        name="com.urbanairship.ios_foreground_notification_presentation_alert" type="bool">true</property>
+    <!-- iOS 10 badge foreground notification presentation option -->
+    <property
+        name="com.urbanairship.ios_foreground_notification_presentation_badge" type="bool">true</property>
+    <!-- iOS 10 sound foreground notification presentation option -->
+    <property
+        name="com.urbanairship.ios_foreground_notification_presentation_sound" type="bool">true</property>
 </ti:app>
