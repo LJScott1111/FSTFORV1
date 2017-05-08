@@ -68,7 +68,7 @@ nsAttendeesList.displayAttendees = function() {
 					backgroundColor : '#000',
 					height : Titanium.UI.SIZE,
 					title : attendees[i].name,
-					selectionStyle : (OS_IOS) ? Titanium.UI.iPhone.ListViewCellSelectionStyle.NONE : ''
+					selectionStyle : (OS_IOS) ? Ti.UI.iOS.ListViewCellSelectionStyle.NONE : ''
 				}
 			});
 

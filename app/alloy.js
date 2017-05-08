@@ -1,3 +1,43 @@
+//Urban Airship
+var UrbanAirship = require('com.urbanairship');
+Alloy.Globals.UrbanAirship = UrbanAirship;
+var channelId = UrbanAirship.channelId;
+console.log('UA ChannelID:', channelId);
+UrbanAirship.userNotificationsEnabled = true;
+// UrbanAirship.setUserNotificationsEnabled(true);
+UrbanAirship.addEventListener(UrbanAirship.EVENT_PUSH_RECEIVED, function(e) {
+	Ti.API.info('Push received' + e.message);
+	alert(e.message);
+});
+Titanium.UI.iPhone.appBadge = 0;
+
+var deviceToken = null;
+
+// Process incoming push notifications
+function receivedPushNotification(e) {
+	alert('Received push: ' + JSON.stringify(e));
+}
+
+// Save the device token for subsequent API calls
+function deviceTokenSuccess(e) {
+	if (Kinvey.getActiveUser() == null) {
+		// Error: there must be a logged-in user.
+	} else {
+		Kinvey.Push.register(e.deviceToken).then(function() {
+			// Successfully registered device with Kinvey.
+			console.log('Registered for Kinvey push');
+		}, function(error) {
+			// Error registering device with Kinvey.
+			console.log('Error registering device', error);
+			alert(error.message);
+		});
+	}
+};
+
+function deviceTokenError(e) {
+	alert('Failed to register for push notifications! ' + e.error);
+};
+
 // Kinvey
 var Kinvey = Alloy.Globals.Kinvey = require('kinvey-titanium-sdk-3.4.4');
 Alloy.Globals.checkUser = function(callback) {

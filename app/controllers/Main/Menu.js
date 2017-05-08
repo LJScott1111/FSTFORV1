@@ -87,6 +87,13 @@ $.privacyPolicy.button.addEventListener('click', function() {
 	}, true);
 });
 
+$.messageCenter.button.addEventListener('click', function() {
+
+	var UrbanAirship = Alloy.Globals.UrbanAirship;
+	Ti.App.fireEvent('toggleMenu');
+	UrbanAirship.displayMessageCenter();
+});
+
 $.logout.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
