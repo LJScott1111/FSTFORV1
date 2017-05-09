@@ -163,6 +163,19 @@ api.getBanners = function(success, fail) {
 	});
 };
 
+api.getGroups = function(success, fail) {
+	var dataStore = Kinvey.DataStore.collection('FestForumGroups', Kinvey.DataStoreType.Sync);
+	
+	// Pull data from the backend and save it to the cache.
+	var promise = dataStore.pull().then(function onSuccess( entities ) {
+		console.log('GROUPS!', JSON.stringify(entities));
+		success(entities);
+	}).catch(function onError( error ) {
+		console.error('GROUPS ERROR!', JSON.stringify(error));
+		fail();
+	});
+};
+
 
 // Get user schedule
 api.getUserSchedule = function(success) {

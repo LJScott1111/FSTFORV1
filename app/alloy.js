@@ -114,7 +114,8 @@ Alloy.Globals.appData = {
 	sponsors : [],
 	attendees : [],
 	schedule : [],
-	banners : []
+	banners : [],
+	groups: []
 };
 
 Alloy.Globals.loading = Alloy.createWidget('nl.fokkezb.loading');

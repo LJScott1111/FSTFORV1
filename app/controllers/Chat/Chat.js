@@ -93,16 +93,16 @@ nsChat.cleanup = function() {
     $.destroy();
 
     // disconnect
-    ortc.disconnect();
+    pubnub.unsubscribe({
+	    channel : channelName,
+	});
 };
 
 nsChat.init = function() {
 
-    // nsChat.connectToChannel();
-
      // Resize the container when the keyboards shows/hides
     Ti.App.addEventListener('keyboardframechanged', nsChat.onKeyboardframechanged);
 
-    $.chatWindow.addEventListener('destroy', nsChat.cleanup);
+    $.chatWindow.addEventListener('close', nsChat.cleanup);
 
 }();

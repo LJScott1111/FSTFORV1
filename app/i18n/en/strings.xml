@@ -49,6 +49,6 @@
 	<string name="err_correctName">The name should be 5-30 characters and can contain only alphanumeric characters.</string>
 	<string name="err_dataDownloadFailed">Required data failed to download. Please try again after some time.</string>
 
-	<string name="chatMainSubtitle">Get started with messaging \nand join groups to stay engaged</string>
+	<string name="chatMainSubtitle">Get started with messaging \nand join groups to stay engaged.</string>
 	<string name="joinGroup">Join Group</string>
 </resources>

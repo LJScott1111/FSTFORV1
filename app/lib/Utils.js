@@ -85,13 +85,25 @@ utils.downloadAppdata = function(fail, callback) {
 
 					Alloy.Globals.API.getBanners(function(bannersData) {
 
-						Alloy.Globals.loading.hide();
 						appdata.banners = JSON.parse(JSON.stringify(bannersData));
-						Titanium.App.Properties.setObject('appdata', appdata);
+						
+						// pull the groups for chat
+						Alloy.Globals.API.getGroups(function(groupsData) {
+							Alloy.Globals.loading.hide();
+							
+							appdata.groups = JSON.parse(JSON.stringify(groupsData));
+							Titanium.App.Properties.setObject('appdata', appdata);
 
-						if (callback) {
-							callback();
-						};
+							if (callback) {
+								callback();
+							};
+						}, function( error ) {
+							Alloy.Globals.loading.hide();
+							if (fail) {
+								fail();
+							};
+						});
+						
 					}, function(error) {
 						Alloy.Globals.loading.hide();
 						if (fail) {
