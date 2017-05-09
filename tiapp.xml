@@ -90,7 +90,7 @@
     <!-- Selects between production vs development credentials -->
     <property name="com.urbanairship.in_production" type="bool">true</property>
     <!-- Android -->
-    <property name="com.urbanairship.gcm_sender" type="String">309913142922</property>
+    <property name="com.urbanairship.gcm_sender" type="String">199119696383</property>
     <property name="com.urbanairship.notification_icon" type="string">appicon.png</property>
     <property name="com.urbanairship.notification_accent_color" type="string">#ff0000</property>
     <!-- iOS 10 alert foreground notification presentation option -->
