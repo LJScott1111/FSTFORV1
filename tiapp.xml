@@ -66,9 +66,7 @@
     <modules>
         <module platform="android">ti.cloudpush</module>
         <module platform="iphone">com.urbanairship</module>
-        <module platform="iphone">co.realtime.ortc</module>
         <module platform="android">com.urbanairship</module>
-        <module platform="android">co.realtime.ortc</module>
     </modules>
     <deployment-targets>
         <target device="android">true</target>
