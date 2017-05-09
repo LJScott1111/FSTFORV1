@@ -2,7 +2,7 @@
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>com.buzzplay.festforums</id>
     <name>Fest Forums</name>
-    <version>1.0.0.11</version>
+    <version>1.0.0.12</version>
     <publisher>shraddhaporwal</publisher>
     <url>www.buzzplay.com</url>
     <description>undefined</description>
@@ -85,8 +85,8 @@
     <property name="com.urbanairship.production_app_key" type="string">m2zMxmnpREyTl29kO9NpFA</property>
     <property name="com.urbanairship.production_app_secret" type="string">cZ1xQTOvQ3-Wxc0cesDTdA</property>
     <!-- Development credentials -->
-    <!-- <property name="com.urbanairship.development_app_key" type="string"></property>
-    <property name="com.urbanairship.development_app_secret" type="string"></property>-->
+    <property name="com.urbanairship.development_app_key" type="string">G3G-EAkFSnSH2SRBbV9r4Q</property>
+    <property name="com.urbanairship.development_app_secret" type="string">NdMrnlyNQHSxan-N7XMwQg</property>
     <!-- Selects between production vs development credentials -->
     <property name="com.urbanairship.in_production" type="bool">true</property>
     <!-- Android -->
