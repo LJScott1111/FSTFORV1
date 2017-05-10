@@ -24,12 +24,9 @@
 }
 
 'Button': {
-	height: '30dp',
+	height: '35dp',
 	width: '40%',
-	// borderWidth: '1dp',
-	// borderRadius: '5dp',
-	// borderColor: Alloy.Globals.globalValues.colors.button,
-	// backgroundColor: Alloy.Globals.globalValues.colors.button,
+	backgroundColor: 'transparent',
 	color: '#fff'
 }
 

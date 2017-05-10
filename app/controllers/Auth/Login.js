@@ -1,6 +1,7 @@
 var nsLogin = {};
-var screen = '';
-var signupStage = 0;
+var screen = '',
+    timer,
+    signupStage = 0;
 var api = Alloy.Globals.API;
 var utils = Alloy.Globals.UTILS;
 
@@ -123,7 +124,7 @@ nsLogin.performLogin = function() {
 };
 
 $.win.addEventListener('close', function() {
-	$.launchVideo = null;
+	clearInterval(timer);
 	$.win = null;
 	console.log('CLOSING LOGIN!');
 });
@@ -376,10 +377,16 @@ nsLogin.init = function() {
 		Titanium.App.Properties.setObject('userSchedule', []);
 	}
 	if (OS_ANDROID) {
-		setInterval(function() {
+		timer = setInterval(function() {
 			$.launchVideo.play();
 		}, 8000);
 	};
+
+	$.welcomeText.text = L('welcomeText').toUpperCase() + '\n' + L('welcomeText1').toUpperCase();
+
+	$.win.addEventListener('androidback', function() {
+		// Do nothing
+	});
 
 	// Setting blank object
 	nsLogin.resetPageState();
