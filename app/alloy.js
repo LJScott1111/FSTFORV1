@@ -9,7 +9,9 @@ UrbanAirship.addEventListener(UrbanAirship.EVENT_PUSH_RECEIVED, function(e) {
 	Ti.API.info('Push received' + e.message);
 	alert(e.message);
 });
-Titanium.UI.iPhone.appBadge = 0;
+if (OS_IOS) {
+	Ti.UI.iOS.appBadge = 0;
+};
 
 var deviceToken = null;
 
@@ -74,16 +76,14 @@ Alloy.Globals.checkUser = function(callback) {
 
 };
 
-
 // Pubnub
 Alloy.Globals.Pubnub = require('pubnub.js')({
-    publish_key       : 'pub-c-7cd54e26-ef61-4fca-bb9f-d036647d8155',
-    subscribe_key     : 'sub-c-0549a7d8-345f-11e7-b3fb-0619f8945a4f',
-    ssl               : false,
-    native_tcp_socket : false,
-    origin            : 'pubsub.pubnub.com'
+	publish_key : 'pub-c-7cd54e26-ef61-4fca-bb9f-d036647d8155',
+	subscribe_key : 'sub-c-0549a7d8-345f-11e7-b3fb-0619f8945a4f',
+	ssl : false,
+	native_tcp_socket : false,
+	origin : 'pubsub.pubnub.com'
 });
-
 
 // Initialice jolicode pageflow
 Alloy.Globals.jolicode = {};
@@ -115,7 +115,7 @@ Alloy.Globals.appData = {
 	attendees : [],
 	schedule : [],
 	banners : [],
-	groups: []
+	groups : []
 };
 
 Alloy.Globals.loading = Alloy.createWidget('nl.fokkezb.loading');
