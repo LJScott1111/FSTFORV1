@@ -8,8 +8,9 @@ var nsChat = {};
 var channelName = args.channelName || "festForums";
 
 var moment = require('alloy/moment');
-
 var pubnub = Alloy.Globals.Pubnub;
+
+var messages = [];
 
 // ----------------------------------
 // LISTEN FOR MESSAGES
@@ -43,11 +44,45 @@ nsChat.onKeyboardframechanged = function(e) {
     $.chatWindow.bottom = Math.max(0, Ti.Platform.displayCaps.platformHeight - e.keyboardFrame.y - tabsHeight);
 };
 
+/**
+ * Called by onChange() and as event listener for the ListView's postlayout event
+ * to scroll all the way down to the latest message.
+ */
+nsChat.scrollDown = function() {
+	$.messageListView.scrollToItem(0, $.messageListView.sections[0].items.length - 1);
+};
 
 nsChat.hideKeyboard = function(e) {
     $.input.blur();
 };
 
+/**
+ * Function set in the view to be called on each model before rendering it in the ListView
+ *
+ * @method     transformMessage
+ * @param      {Object}  The original model
+ * @return     {Object}  New or changed attributes
+ */
+nsChat.transformMessage = function(model) {
+
+	// Convert 1|0 to bool
+	var mine = !!model.get('mine');
+
+	// Create the meta string
+	var meta = (mine ? 'Sent' : 'Received') + ' ' + moment(model.get('sent')).format('HH:mm:ss');
+
+	// Get the read-date
+	// var read = model.get('read'); 
+	// if (read) {
+		// // Add the read-date to the meta
+		// meta += ', read ' + moment(read).format('HH:mm:ss');
+	// }
+
+	return {
+		template: mine ? 'mine' : 'theirs',
+		meta: meta
+	};
+};
 
 // Event handlers
 // ----------------------------------
@@ -75,16 +110,21 @@ nsChat.sendMessage = function(e) {
 };
 
 nsChat.addRowToMessages = function(msg, userName) {
-    var now = new Date();
-    var h = now.getHours();
-    var m = now.getMinutes();
-    var s = now.getSeconds();
-    if(h<10) h = '0' + h;
-    if(m<10) m = '0' + m;
-    if(s<10) s = '0' + s;
-    var time = h+':'+m+':'+s;
+	var time = moment(Date.now()).format('MMMM Do YYYY, h:mm:ss a');
+	
+    var mine = ( Titanium.App.Properties.getString('name') == userName ) ? 1 : 0;
+    
+    // Create the meta string
+	// var meta = (mine ? 'Sent' : 'Received') + ' ' + time;
 
-    $.chat.value += userName +" :"+msg + " (" + time + ")" + "\n";
+	$.messagesSection.appendItems([{
+		"userName": {text: userName},
+		"message": {text: msg},
+		"meta": {text: time},
+		"template": mine ? 'mine' : 'theirs'
+	}]);   
+	
+	nsChat.scrollDown(); 
 };
 
 nsChat.cleanup = function() {
@@ -104,5 +144,7 @@ nsChat.init = function() {
     Ti.App.addEventListener('keyboardframechanged', nsChat.onKeyboardframechanged);
 
     $.chatWindow.addEventListener('close', nsChat.cleanup);
+    $.input.addEventListener('return', nsChat.sendMessage);
+  	$.messageListView.addEventListener('itemclick', nsChat.hideKeyboard);
 
 }();
