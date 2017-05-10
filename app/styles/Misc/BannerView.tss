@@ -3,9 +3,16 @@
 	zIndex: 999
 }
 
-"#bannerImage": {
-	bottom: 20,
+"#bannerImage[platform=ios]": {
+	bottom: '20dp',
 	width: Titanium.UI.FILL,
-	height: 60,
+	height: '60dp',
+	touchEnabled: false
+}
+
+"#bannerImage[platform=android]": {
+	bottom: 0,
+	width: Titanium.UI.FILL,
+	height: '80dp',
 	touchEnabled: false
 }
