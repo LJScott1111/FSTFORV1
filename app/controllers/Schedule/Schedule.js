@@ -63,7 +63,7 @@ nsSchedule.showSchedule = function(schedule) {
 				text : schedule[i].Session
 			},
 			time : {
-				text : startTime + ' - ' + endTime
+				text : (schedule[i].start_time) ? startTime + ' - ' + endTime : ''
 			},
 			star : {
 				text : (schedule[i].addedToSchedule) ? '\uf005' : '\uf006'

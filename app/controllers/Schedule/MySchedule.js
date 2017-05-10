@@ -54,7 +54,7 @@ nsMySchedule.showSchedule = function(schedule) {
 				text : schedule[i].Session
 			},
 			time : {
-				text : startTime + ' - ' + endTime
+				text : (schedule[i].start_time) ? startTime + ' - ' + endTime : ''
 			},
 			star : {
 				text : '\uf005'
