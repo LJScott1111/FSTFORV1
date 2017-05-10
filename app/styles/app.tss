@@ -1,26 +1,229 @@
-/*
-
-This is your global styles file. Selectors and rules you define
-here will be applied throughout your app. However, these rules
-have the lowest priority of any style settings.
-
-For more information, see the "Style Priorities" section of
-http://docs.appcelerator.com/platform/latest/#!/guide/Alloy_Styles_and_Themes
-
-For example, the following would apply to all labels, windows,
-and text fields (depending on platform) in your app unless you
-overrode the settings with other TSS, XML, or JS settings:
-
-'Label[platform=android,windows]': {
-	color: '#000' // all platforms except Android and Windows default to black
-}
 
 'Window': {
-	backgroundColor: '#fff' // white background instead of default transparent or black
+	backgroundColor: '#fff', // white background instead of default transparent or black
+	/* TODO
+	orientationModes: [
+	Ti.UI.PORTRAIT
+	],*/
+
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL
 }
 
-'TextField[platform=android]': {
-	height: Ti.UI.SIZE
+'View': {
+	hiddenBehavior: Titanium.UI.HIDDEN_BEHAVIOR_GONE
 }
 
+'Label[platform=android,windows]': {
+	color: '#000'
+}
+
+'ListItem[platform=ios]':{
+	selectedColor: 'transparent',
+	selectedBackgroundColor: 'transparent'
+}
+
+'Button': {
+	height: '35dp',
+	width: '40%',
+	backgroundColor: 'transparent',
+	color: '#fff'
+}
+
+'.keyboard-type-email': {
+	keyboardType: Titanium.UI.KEYBOARD_TYPE_EMAIL,
+	autocapitalization: Titanium.UI.TEXT_AUTOCAPITALIZATION_NONE
+}
+
+'.hidden': {
+	visible: false,
+	hiddenBehavior: Titanium.UI.HIDDEN_BEHAVIOR_GONE
+}
+
+".iosHeader": {
+	width: '100%',
+	height: '20dp',
+	backgroundColor: '#000'
+}
+
+/**
+* 	LAYOUT STYLE GLOBAL
 */
+
+'.vertical-layout': {
+	layout: 'vertical'
+}
+
+'.horizontal-layout': {
+	layout: 'horizontal'
+}
+
+'.absolute-layout': {
+	layout: 'absolute'
+}
+
+'.height-size-width-fill': {
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL
+}
+
+'.layout-size': {
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.SIZE
+}
+
+'.layout-fill': {
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL
+}
+
+'.header': {
+	height: '50dp',
+	width: Titanium.UI.FILL
+}
+
+/**
+* 	PADDING GLOBAL
+*/
+
+'.padding-left': {
+	left: '10dp'
+}
+
+'.padding-right': {
+	right: '10dp'
+}
+
+'.padding-top': {
+	top: '10dp'
+}
+
+'.padding-bottom': {
+	bottom: '10dp'
+}
+
+'.padding-left-zero': {
+	left: '0dp'
+}
+
+'.padding-right-zero': {
+	right: '0dp'
+}
+
+'.padding-top-zero': {
+	top: '0dp'
+}
+
+'.padding-bottom-zero': {
+	bottom: '0dp'
+}
+
+'.padding-left-right-top': {
+	left: '10dp',
+	right: '10dp',
+	top: '10dp'
+}
+
+
+/**
+* 	OTHER MISC STYLES
+*/
+
+'.view-separator': {
+	top: '0dp',
+	backgroundColor: '#d8d8d8',
+	height: '1dp',
+	width: Titanium.UI.FILL,
+	touchEnabled: false,
+	opacity: 0.2
+}
+
+'.vertical-separator': {
+	top: '10dp',
+	bottom: '10dp',
+	backgroundColor: '#d8d8d8',
+	width: '1dp',
+	// height: Titanium.UI.FILL,
+	touchEnabled: false,
+	opacity: 0.5
+}
+
+'.touch-false': {
+	touchEnabled: false
+}
+
+'.theme-color': {
+	color: Alloy.Globals.globalValues.colors.theme
+}
+
+'.theme-bgcolor': {
+	backgroundColor: Alloy.Globals.globalValues.colors.theme
+}
+
+'.color-white': {
+	color: '#fff'
+}
+
+'.scrollview-normal': {
+	// height: Titanium.UI.FILL,
+	width: '100%',
+	scrollType: 'vertical',
+	// layout: 'vertical',
+	contentHeight: 'auto',
+	contentWidth: 'auto',
+	disableBounce: true,
+	top: 0,
+	bottom: '20dp'
+}
+
+/**
+* FONT STYLE GLOBAL
+*/
+
+'.fontawesome': {
+	font: {
+		fontFamily: 'FontAwesome'
+	}
+}
+
+'.font-11': {
+	font: {
+		fontSize: '11dp'
+	}
+}
+
+'.font-13': {
+	font: {
+		fontSize: '13dp'
+	}
+}
+
+'.font-14': {
+	font: {
+		fontSize: '14dp'
+	}
+}
+
+'.font-16': {
+	font: {
+		fontSize: '16dp'
+	}
+}
+
+'.font-18': {
+	font: {
+		fontSize: '18dp'
+	}
+}
+
+'.font-22': {
+	font: {
+		fontSize: '22dp'
+	}
+}
+
+'.font-bold': {
+	font:{
+		fontWeight: 'bold'
+	}
+}

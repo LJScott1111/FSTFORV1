@@ -1,0 +1,10 @@
+
+".container[platform=ios]": {
+	layout: 'vertical'
+}
+
+".container": {
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL,
+	backgroundColor: '#fff'
+}

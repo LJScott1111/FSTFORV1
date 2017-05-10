@@ -1,0 +1,15 @@
+<Alloy>
+	<View id="vwMainList" class="vertical-layout layout-fill padding-top-zero">
+		<ListView id="speakersListView" backgroundColor="#000" bottom="50dp" defaultItemTemplate="speakersListTemplate">
+			<Templates>
+				<ItemTemplate name="speakersListTemplate">
+					<View class="horizontal-layout height-size-width-fill">
+						<ImageView id="image" bindId="image" class="padding-top padding-bottom padding-left"></ImageView>
+						<Label id="name" bindId="name" class="padding-left font-16 color-white"></Label>
+					</View>
+				</ItemTemplate>
+			</Templates>
+			<ListSection/>
+		</ListView>
+	</View>
+</Alloy>

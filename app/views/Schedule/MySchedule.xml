@@ -1,0 +1,39 @@
+<Alloy>
+	<View id="vwMainList" backgroundColor="#fff" class="layout-fill padding-top-zero">
+		<View class="options-parent-view padding-top-zero">
+			<View id="thursdayView" class="padding-left-zero padding-top-zero options">
+				<Label id="thursday" text="L('thursday')"></Label>
+				<View id="thursdaySelected" class="theme-bgcolor selected"></View>
+			</View>
+			<View id="fridayView" class="padding-right-zero padding-top-zero options">
+				<Label id="friday" class="" text="L('friday')"></Label>
+				<View id="fridaySelected" class="selected"></View>
+			</View>
+		</View>
+		<View id="showList">
+			<ListView id="scheduleListView" bottom="20dp" height="Titanium.UI.FILL" defaultItemTemplate="scheduleListTemplate">
+				<Templates>
+					<ItemTemplate name="scheduleListTemplate">
+						<View class="vertical-layout height-size-width-fill padding-top padding-bottom">
+							<Label id="session" bindId="session" class="padding-left font-18 font-color"></Label>
+							<View class="padding-left-zero height-size-width-fill">
+								<View class="padding-left-zero vertical-layout layout-size">
+									<Label id="time" bindId="time" class="padding-left font-14"></Label>
+									<View id="readMoreView" class="horizontal-layout padding-top padding-left-zero layout-size" onClick="openScheduleLink">
+										<Label text="L('readMore')" class="touch-false font-color padding-left font-14"></Label>
+										<Label text="\uf178" class="touch-false font-color fontawesome padding-left font-14"></Label>
+									</View>
+								</View>
+								<View id="addStarView" class="padding-right-zero vertical-layout layout-size">
+									<Label id="star" bindId="star" class="fontawesome font-22 theme-color" onClick="toggleStar"></Label>
+									<Label id="removeFromSchedule" bindId="removeFromSchedule" textAlign="Titanium.UI.TEXT_ALIGNMENT_CENTER" class="padding-right font-11"></Label>
+								</View>
+							</View>
+						</View>
+					</ItemTemplate>
+				</Templates>
+				<ListSection/>
+			</ListView>
+		</View>
+	</View>
+</Alloy>

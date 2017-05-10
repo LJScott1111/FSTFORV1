@@ -1,0 +1,5 @@
+<Alloy>
+	<View id="vwMain" class="layout-fill">
+		<WebView id="webLinkView"></WebView>
+	</View>
+</Alloy>

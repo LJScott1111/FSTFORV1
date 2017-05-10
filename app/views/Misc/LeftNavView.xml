@@ -1,0 +1,5 @@
+<Alloy>
+	<View class="container layout-size" id="menuBar">
+		<Label class="fontawesome font-22 padding-left color-white" text="\uf0c9"></Label>
+	</View>
+</Alloy>

@@ -1,0 +1,16 @@
+<Alloy>
+	<View id="vwAttendeesList" class="layout-fill padding-top-zero">
+		<ListView id="attendeesListView" backgroundColor="#000" class="padding-top-zero" bottom="80dp" defaultItemTemplate="attendeesListTemplate">
+			<Templates>
+				<ItemTemplate name="attendeesListTemplate">
+					<View class="vertical-layout height-size-width-fill">
+						<Label id="name" bindId="name" class="padding-top padding-left font-16 color-white"></Label>
+						<Label id="titleAndCompany" bindId="titleAndCompany" class="padding-top padding-left font-14 color-white"></Label>
+					</View>
+				</ItemTemplate>
+			</Templates>
+			<ListSection/>
+		</ListView>
+		<Require id="banner" src="Misc/BannerView" />
+	</View>
+</Alloy>

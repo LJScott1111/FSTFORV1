@@ -1,0 +1,14 @@
+<Alloy>
+	<View class="layout-fill">
+		<ScrollView class="scrollview-normal vertical-layout padding-top-zero" bottom="80dp">
+			<ImageView id="image" class="padding-left-zero padding-right-zero" class="height-size-width-fill"></ImageView>
+			<Label id="name" class="padding-left-right-top font-18"></Label>
+			<Label id="date" class="padding-left-right-top padding-right font-14"></Label>
+			<Label id="time" class="padding-left-right-top padding-right font-14"></Label>
+			<Label id="title" class="padding-left-right-top font-14"></Label>
+			<Label id="company" class="padding-left-right-top font-14"></Label>
+			<Label id="bio" class="padding-left-right-top font-14"></Label>
+		</ScrollView>
+		<Require id="banner" src="Misc/BannerView" />
+	</View>
+</Alloy>

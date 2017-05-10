@@ -1,0 +1,7 @@
+<Alloy>
+	<View backgroundColor="white" class="layout-fill vertical-layout">
+	    <ImageView id="image" image="/graphics/messaging.png" />
+	    <Label id="subtitle" text="L('chatMainSubtitle')" />
+	    <Label id="joinGroup" onClick="doClick" text="L('joinGroup')" />
+	</View>
+</Alloy>

@@ -1,0 +1,6 @@
+<Alloy>
+	<View id="vwMain" class="layout-fill">
+		<WebView id="webLinkView" bottom="80dp" class="padding-top-zero"></WebView>
+		<Require id="banner" src="Misc/BannerView" />
+	</View>
+</Alloy>
