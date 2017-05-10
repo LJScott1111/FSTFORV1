@@ -11,7 +11,7 @@ var api = {};
 api.signup = function(args, success, fail) {
 
 	var promise = Kinvey.User.signup({
-		name: args.name,
+		name : args.name,
 		username : args.username,
 		password : args.password,
 		application : 'festforum'
@@ -165,17 +165,16 @@ api.getBanners = function(success, fail) {
 
 api.getGroups = function(success, fail) {
 	var dataStore = Kinvey.DataStore.collection('FestForumGroups', Kinvey.DataStoreType.Sync);
-	
+
 	// Pull data from the backend and save it to the cache.
-	var promise = dataStore.pull().then(function onSuccess( entities ) {
+	var promise = dataStore.pull().then(function onSuccess(entities) {
 		console.log('GROUPS!', JSON.stringify(entities));
 		success(entities);
-	}).catch(function onError( error ) {
+	}).catch(function onError(error) {
 		console.error('GROUPS ERROR!', JSON.stringify(error));
 		fail();
 	});
 };
-
 
 // Get user schedule
 api.getUserSchedule = function(success) {
@@ -206,12 +205,13 @@ api.saveUserSchedule = function(args, success) {
 
 	Ti.App.Properties.setObject('userSchedule', userSchedule);
 	console.log('userSchedule( -- ', userSchedule);
-	success();// Show success message TODO
+	success();
+	// Show success message TODO
 };
 
 api.deleteUserSchedule = function(args, success) {
 	// Local DB
-	
+
 	var userSchedule = Ti.App.Properties.getObject('userSchedule', []);
 
 	if (userSchedule.length != 0) {
@@ -228,7 +228,8 @@ api.deleteUserSchedule = function(args, success) {
 	}
 
 	Ti.App.Properties.setObject('userSchedule', userSchedule);
-	success();// Show success message TODO
+	success();
+	// Show success message TODO
 };
 
 module.exports = api;
