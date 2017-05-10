@@ -61,7 +61,7 @@ nsMainView.openMySchedule = function() {
 };
 
 nsMainView.openChat = function() {
-	Alloy.Globals.openWindow('Chat/Chat', {}, true);
+	Alloy.Globals.openWindow('Chat/ChatMain', {}, true);
 };
 
 nsMainView.openSponsors = function() {

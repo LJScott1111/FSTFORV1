@@ -5,47 +5,26 @@
 var nsChat = {};
 
 // constants
-var applicationKey = "ulcgPu";
-var applicationPrivateKey = "fu4FByIrpiSK";
 var channelName = "festForums";
 
 var moment = require('alloy/moment');
 
-var ortc = require('co.realtime.ortc');
+var pubnub = Alloy.Globals.Pubnub;
 
-ortc.addEventListener('onException', function(e) {
-    // addRowToEvents('Exception: '+e.info);
-    console.log('Exception: '+e.info);
-});
-
-ortc.addEventListener('onConnected', function(e) {
-    console.log('Connected');
-     // Subscribe to the channel
-    ortc.subscribe(channelName, true);
-});
-
-ortc.addEventListener('onDisconnected', function(e) {
-    console.log('Disconnected');
-});
-
-ortc.addEventListener('onSubscribed', function(e) {
-    console.log('Subscribed to channel: '+e.channel);
-});
-
-ortc.addEventListener('onUnsubscribed', function(e) {
-    console.log('Unsubscribed from: '+e.channel);
-});
-
-ortc.addEventListener('onMessage', function(e) {
-    console.log('(Channel: '+e.channel+') Message received: '+e.message);
-    nsChat.addRowToMessages(e.message);
-});
-
-ortc.addEventListener('onPresence', function(e) {
-    if (e.error != ""){
-        console.log('(Channel: '+e.channel+') Presence error: ' + e.error);
-    } else {
-        console.log('(Channel: '+e.channel+') Presence: '+e.result);
+// ----------------------------------
+// LISTEN FOR MESSAGES
+// ----------------------------------
+pubnub.subscribe({
+    channel  : channelName,
+    connect  : function() {
+        console.log( "Connected" );
+    },
+    callback : function(message) {
+        console.log( "Received :" + message );
+        nsChat.addRowToMessages(message.text);
+    },
+    error : function() {
+        console.log( "Lost Connection..." );
     }
 });
 
@@ -62,31 +41,38 @@ nsChat.onKeyboardframechanged = function(e) {
     // Full screen height minus keyboard start (from top) minus tabs height
     // If the keyboard is down this will be -50, so at least do 0
     $.chatWindow.bottom = Math.max(0, Ti.Platform.displayCaps.platformHeight - e.keyboardFrame.y - tabsHeight);
-}
+};
 
 
 nsChat.hideKeyboard = function(e) {
     $.input.blur();
-}
+};
 
-nsChat.connectToChannel = function() {
-    // Connect to server
-    ortc.connectionMetadata = 'Titanium example';
-    ortc.clusterUrl = 'http://ortc-developers.realtime.co/server/2.1';
-    ortc.connect(applicationKey, applicationPrivateKey);
-}
 
 // Event handlers
-
+// ----------------------------------
+// SEND MESSAGE
+// ----------------------------------
 nsChat.sendMessage = function(e) {
 
     // $.chat.value += "me: " + $.input.value + "\n";
     console.log('User name :' + Titanium.App.Properties.getString('name'));
     var chatMessage = Titanium.App.Properties.getString('name') + " :" + $.input.value;
-    ortc.send(channelName, chatMessage);
+    
+    pubnub.publish({
+        channel  : channelName,
+        message  : { text : chatMessage, color : "#111" },
+        callback : function(info) {
+        	console.log("Publish callback :" + info);
+            if (!info[0]) setTimeout(function() {
+                nsChat.addRowToMessages(chatMessage);
+            }, 2000 );
+        }
+    });
+    
     $.input.value = "";
 
-}
+};
 
 nsChat.addRowToMessages = function(msg) {
     var now = new Date();
@@ -99,7 +85,7 @@ nsChat.addRowToMessages = function(msg) {
     var time = h+':'+m+':'+s;
 
     $.chat.value += msg + " (" + time + ")" + "\n";
-}
+};
 
 nsChat.cleanup = function() {
     // let Alloy clean up listeners to global collections for data-binding
@@ -107,16 +93,16 @@ nsChat.cleanup = function() {
     $.destroy();
 
     // disconnect
-    ortc.disconnect();
-}
+    pubnub.unsubscribe({
+	    channel : channelName,
+	});
+};
 
 nsChat.init = function() {
-
-    nsChat.connectToChannel();
 
      // Resize the container when the keyboards shows/hides
     Ti.App.addEventListener('keyboardframechanged', nsChat.onKeyboardframechanged);
 
-    $.chatWindow.addEventListener('destroy', nsChat.cleanup);
+    $.chatWindow.addEventListener('close', nsChat.cleanup);
 
 }();

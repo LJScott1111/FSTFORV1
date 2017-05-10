@@ -1,0 +1,7 @@
+<Alloy>
+	<View id="vmGroupsList" class="vertical-layout layout-fill padding-top-zero">
+		<ListView id="groupsListView">
+			<ListSection/>
+	    </ListView>
+	</View>
+</Alloy>
