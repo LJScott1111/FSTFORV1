@@ -1,11 +1,11 @@
 /**
  * Chat.js
  */
-
+var args = $.args;
 var nsChat = {};
 
 // constants
-var channelName = "festForums";
+var channelName = args.channelName || "festForums";
 
 var moment = require('alloy/moment');
 
@@ -21,7 +21,7 @@ pubnub.subscribe({
     },
     callback : function(message) {
         console.log( "Received :" + message );
-        nsChat.addRowToMessages(message.text);
+        nsChat.addRowToMessages(message.text, message.userName);
     },
     error : function() {
         console.log( "Lost Connection..." );
@@ -57,11 +57,11 @@ nsChat.sendMessage = function(e) {
 
     // $.chat.value += "me: " + $.input.value + "\n";
     console.log('User name :' + Titanium.App.Properties.getString('name'));
-    var chatMessage = Titanium.App.Properties.getString('name') + " :" + $.input.value;
+    var chatMessage = $.input.value;
     
     pubnub.publish({
         channel  : channelName,
-        message  : { text : chatMessage, color : "#111" },
+        message  : { text : chatMessage, userName : Titanium.App.Properties.getString('name') },
         callback : function(info) {
         	console.log("Publish callback :" + info);
             if (!info[0]) setTimeout(function() {
@@ -74,7 +74,7 @@ nsChat.sendMessage = function(e) {
 
 };
 
-nsChat.addRowToMessages = function(msg) {
+nsChat.addRowToMessages = function(msg, userName) {
     var now = new Date();
     var h = now.getHours();
     var m = now.getMinutes();
@@ -84,7 +84,7 @@ nsChat.addRowToMessages = function(msg) {
     if(s<10) s = '0' + s;
     var time = h+':'+m+':'+s;
 
-    $.chat.value += msg + " (" + time + ")" + "\n";
+    $.chat.value += userName +" :"+msg + " (" + time + ")" + "\n";
 };
 
 nsChat.cleanup = function() {
