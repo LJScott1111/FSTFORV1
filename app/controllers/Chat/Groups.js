@@ -18,6 +18,7 @@ nsGroups.displayGroups = function() {
 	        properties: {
 	            data: item,
 				title: item.name,
+				color: '#000',
 				accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE,
 				height : Titanium.UI.SIZE,
 				selectionStyle : (OS_IOS) ? Ti.UI.iOS.ListViewCellSelectionStyle.NONE : ''
