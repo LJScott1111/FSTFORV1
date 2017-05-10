@@ -7,6 +7,13 @@ var thusdaySchedule;
 var fridaySchedule;
 var firstload = true;
 
+nsSchedule.setBanner = function() {
+
+	var banner = Alloy.createController('Misc/BannerView').getView();
+	$.vwMainList.add(banner);
+	$.scheduleListView.bottom = '80dp';
+};
+
 function toggleStar(e) {
 
 	var item = e.section.getItemAt(e.itemIndex);
@@ -132,6 +139,11 @@ nsSchedule.init = function() {
 			};
 		}
 	}
+	
+	if ($.args.banner  == true) {
+
+		nsSchedule.setBanner();
+	};
 
 	// Filter Schedule
 	nsSchedule.filterSchedule();

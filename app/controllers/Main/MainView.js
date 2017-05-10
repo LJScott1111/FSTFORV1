@@ -34,9 +34,8 @@ nsMainView.postlayoutCall = function() {
 				}).getView().open();
 
 			}, function() {
-				// Do nothing
-				// nsMainView.setBanner();
 
+				nsMainView.setBanner();
 			});
 		}
 	});
@@ -52,12 +51,16 @@ nsMainView.openSpeaker = function() {
 
 nsMainView.openSchedule = function() {
 
-	Alloy.Globals.openWindow('Schedule/Schedule', {}, true);
+	Alloy.Globals.openWindow('Schedule/Schedule', {
+		banner : true
+	}, true);
 };
 
 nsMainView.openMySchedule = function() {
 
-	Alloy.Globals.openWindow('Schedule/MySchedule', {}, true);
+	Alloy.Globals.openWindow('Schedule/MySchedule', {
+		banner : true
+	}, true);
 };
 
 nsMainView.openChat = function() {

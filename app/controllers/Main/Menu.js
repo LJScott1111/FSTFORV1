@@ -18,7 +18,9 @@ $.speakers.button.addEventListener('click', function() {
 $.schedule.button.addEventListener('click', function() {
 
 	Ti.App.fireEvent('toggleMenu');
-	Alloy.Globals.openWindow('Schedule/Schedule', {}, true);
+	Alloy.Globals.openWindow('Schedule/Schedule', {
+		banner : true
+	}, true);
 });
 
 $.sponsors.button.addEventListener('click', function() {
