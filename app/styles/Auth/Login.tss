@@ -12,7 +12,7 @@
 	repeatMode: true,
 	height: Titanium.UI.FILL,
 	width: Titanium.UI.FILL,
-	url: '/graphics/launch_video.mov',
+	url: '/graphics/launch_video.mp4',
 	mediaControlStyle: Titanium.Media.VIDEO_CONTROL_NONE,
 	scalingMode : Titanium.Media.VIDEO_SCALING_ASPECT_FIT,
 	// fullscreen: true
