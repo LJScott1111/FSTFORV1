@@ -22,7 +22,7 @@ pubnub.subscribe({
     },
     callback : function(message) {
         console.log( "Received :" + message );
-        nsChat.addRowToMessages(message.text, message.userName);
+        nsChat.addRowToMessages(message.text, message.userName, message.time ? message.time : Date.now());
     },
     error : function() {
         console.log( "Lost Connection..." );
@@ -84,19 +84,42 @@ nsChat.transformMessage = function(model) {
 	};
 };
 
+/**
+ * Fuction retrive the last 100 messages on a channel:
+ */
+nsChat.fetchHistory = function() {
+	pubnub.history({
+	    channel: channelName,
+	    callback: function(m){
+	        console.log(JSON.stringify(m));
+	        
+	        if ( m[0].length > 0 ) {
+	        	var oldMessages = m[0];
+	        	
+	        	for ( var i = 0, 
+	        		len = oldMessages.length; i < len; i++ ) {
+	        		// Add messages
+	        		nsChat.addRowToMessages(oldMessages[i].text, oldMessages[i].userName, oldMessages[i].time ? oldMessages[i].time : Date.now());
+	        	}
+	        	
+	        	nsChat.scrollDown();
+	        }
+	    },
+	    count: 100, // 100 is the default
+	    reverse: false // false is the default
+	});
+};
+
 // Event handlers
 // ----------------------------------
 // SEND MESSAGE
 // ----------------------------------
 nsChat.sendMessage = function(e) {
-
-    // $.chat.value += "me: " + $.input.value + "\n";
-    console.log('User name :' + Titanium.App.Properties.getString('name'));
     var chatMessage = $.input.value;
     
     pubnub.publish({
         channel  : channelName,
-        message  : { text : chatMessage, userName : Titanium.App.Properties.getString('name') },
+        message  : { text : chatMessage, userName : Titanium.App.Properties.getString('name'), time: Date.now() },
         callback : function(info) {
         	console.log("Publish callback :" + info);
             if (!info[0]) setTimeout(function() {
@@ -109,8 +132,16 @@ nsChat.sendMessage = function(e) {
 
 };
 
-nsChat.addRowToMessages = function(msg, userName) {
-	var time = moment(Date.now()).format('MMMM Do YYYY, h:mm:ss a');
+/**
+ * Function add message row item into the ListView
+ *
+ * @method     addRowToMessages
+ * @param      {string}  message text
+ * @param      {string}  user name
+ * @param      {string}  time
+ */
+nsChat.addRowToMessages = function(msg, userName, time) {
+	var time = moment(time).format('MMMM Do YYYY, h:mm:ss a');
 	
     var mine = ( Titanium.App.Properties.getString('name') == userName ) ? 1 : 0;
     
@@ -139,6 +170,8 @@ nsChat.cleanup = function() {
 };
 
 nsChat.init = function() {
+	
+	console.log("CHANNEL NAME :" + channelName);
 
      // Resize the container when the keyboards shows/hides
     Ti.App.addEventListener('keyboardframechanged', nsChat.onKeyboardframechanged);
@@ -146,5 +179,8 @@ nsChat.init = function() {
     $.chatWindow.addEventListener('close', nsChat.cleanup);
     $.input.addEventListener('return', nsChat.sendMessage);
   	$.messageListView.addEventListener('itemclick', nsChat.hideKeyboard);
+  	
+  	// retrieve the last 100 messages on a channel
+  	nsChat.fetchHistory();
 
 }();
