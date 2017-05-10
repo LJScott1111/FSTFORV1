@@ -68,6 +68,9 @@ nsSchedule.showSchedule = function(schedule) {
 			star : {
 				text : (schedule[i].addedToSchedule) ? '\uf005' : '\uf006'
 			},
+			addToSchedule : {
+				text : L('addTo') + '\n' + L('mySchedule2')
+			},
 			properties : {
 				url : schedule[i].redirect_link,
 				height : Titanium.UI.SIZE,
@@ -139,8 +142,8 @@ nsSchedule.init = function() {
 			};
 		}
 	}
-	
-	if ($.args.banner  == true) {
+
+	if ($.args.banner == true) {
 
 		nsSchedule.setBanner();
 	};

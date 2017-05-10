@@ -59,6 +59,9 @@ nsMySchedule.showSchedule = function(schedule) {
 			star : {
 				text : '\uf005'
 			},
+			removeFromSchedule : {
+				text : L('removeFrom') + '\n' + L('mySchedule2')
+			},
 			properties : {
 				url : schedule[i].redirect_link,
 				height : Titanium.UI.SIZE,
@@ -114,8 +117,8 @@ $.fridayView.addEventListener('click', function() {
 });
 
 nsMySchedule.init = function() {
-	
-	if ($.args.banner  == true) {
+
+	if ($.args.banner == true) {
 
 		nsMySchedule.setBanner();
 	};

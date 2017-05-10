@@ -26,7 +26,7 @@
 								</View>
 								<View id="addStarView" class="padding-right-zero vertical-layout layout-size">
 									<Label id="star" bindId="star" class="fontawesome font-22 theme-color" onClick="toggleStar"></Label>
-									<Label text="L('addToSchedule')" textAlign="Titanium.UI.TEXT_ALIGNMENT_CENTER" class="padding-right font-11"></Label>
+									<Label id="addToSchedule" bindId="addToSchedule" textAlign="Titanium.UI.TEXT_ALIGNMENT_CENTER" class="padding-right font-11"></Label>
 								</View>
 							</View>
 						</View>
