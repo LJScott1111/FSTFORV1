@@ -1,11 +1,10 @@
 // Arguments passed into this controller can be accessed via the `$.args` object directly or:
-var args = $.args;
 var nsGroups = {};
 
 $.groupsListView.addEventListener('itemclick', function(e) {
 	var item = e.section.getItemAt(e.itemIndex);
 	console.log('GROUPS ', item.properties.data);
-	// Alloy.Globals.openWindow('Speakers/Profile', item.properties.data, true);
+	Alloy.Globals.openWindow('Chat/Chat', item.properties.data, true);
 });
 
 nsGroups.displayGroups = function() {
