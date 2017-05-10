@@ -91,7 +91,7 @@ nsMainView.createBlock = function(block, data, callback, side) {
 		properties : {
 			left : '4dp',
 			top : '4dp',
-			width : blockWidth,
+			width : (OS_IOS) ? blockWidth : '48.5%',
 			height : blockWidth,
 			backgroundImage : data.bgImage
 		}
@@ -101,7 +101,7 @@ nsMainView.createBlock = function(block, data, callback, side) {
 		properties : {
 			right : '4dp',
 			top : '4dp',
-			width : blockWidth,
+			width : (OS_IOS) ? blockWidth : '48.5%',
 			height : blockWidth,
 			backgroundImage : data.bgImage
 		}
