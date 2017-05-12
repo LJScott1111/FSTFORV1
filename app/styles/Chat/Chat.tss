@@ -15,7 +15,6 @@
   top: 0,
   bottom: '70dp',
 
-  separatorStyle: Ti.UI.iPhone.ListViewSeparatorStyle.NONE,
   backgroundColor: "#3CC6D9",
 
   // FIXME: https://jira.appcelerator.org/browse/TIMOB-19209
@@ -23,14 +22,20 @@
   height: Ti.UI.FILL
 }
 
+"ListView[platform=ios]": {
+  separatorStyle: Ti.UI.iPhone.ListViewSeparatorStyle.NONE,
+}
+
 "ItemTemplate": {
   	height: Ti.UI.SIZE,
 	backgroundColor: "#3CC6D9",
   	// Will disable swipe-to-the-left-to-delete
   	canEdit: false,
+}
 
-  	// We don't want tapping on the item to change its backgroundColor
-  	selectionStyle: Ti.UI.iPhone.ListViewCellSelectionStyle.NONE
+"ItemTemplate[platform=ios]": {
+    // We don't want tapping on the item to change its backgroundColor
+    selectionStyle: Ti.UI.iPhone.ListViewCellSelectionStyle.NONE
 }
 
 // Styles for the bubbles
