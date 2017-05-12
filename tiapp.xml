@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>com.buzzplay.festforums</id>
+    <!-- <id>com.buzzplay.festforumsofficial</id> --> <!-- For Android -->
     <name>Fest Forums</name>
     <version>1.0.1.3</version>
     <publisher>shraddhaporwal</publisher>
